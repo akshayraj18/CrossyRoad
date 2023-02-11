@@ -36,7 +36,7 @@ public class ConfigActivity extends AppCompatActivity {
         TextView displayText = (TextView) findViewById(R.id.textView4);
         save.setOnClickListener(v -> {
             String name = read.getText().toString().trim();
-            if (name == null || name.length() == 0) { //trim checks for empty strings
+            if (name.length() == 0) { //trim checks for empty strings
                 AlertDialog.Builder builder = new AlertDialog.Builder(ConfigActivity.this);
                 builder.setTitle("Invalid Name");
                 builder.setMessage("Empty names are not allowed");
