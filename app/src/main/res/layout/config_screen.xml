@@ -34,8 +34,8 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="154dp"
-        android:layout_height="105dp"
+        android:layout_width="147dp"
+        android:layout_height="106dp"
         android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.167"
@@ -47,6 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Jordan"
+            android:checked="true"
             android:textAlignment="center"
             android:textSize="10pt" />
 
@@ -83,14 +84,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="328dp"
-        android:text="User Name"
+        android:text="Player Name"
         android:textSize="13pt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/playerImage"
         android:layout_width="202dp"
         android:layout_height="232dp"
         android:layout_marginBottom="88dp"
@@ -98,10 +99,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/chungus" />
+        app:srcCompat="@drawable/mj" />
 
     <RadioGroup
-        android:id="@+id/radioGroup2"
+        android:id="@+id/mode"
         android:layout_width="166dp"
         android:layout_height="107dp"
         android:layout_marginStart="28dp"
@@ -113,6 +114,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Easy"
+            android:checked="true"
             android:textAlignment="center"
             android:textSize="10pt" />
 
@@ -139,9 +141,19 @@
         android:layout_height="45dp"
         android:layout_marginStart="28dp"
         android:text="Save"
-        app:layout_constraintBottom_toTopOf="@+id/radioGroup2"
         app:layout_constraintStart_toEndOf="@+id/userName"
         app:layout_constraintTop_toTopOf="@+id/userName"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/AlertTextView"
+        android:layout_width="217dp"
+        android:layout_height="176dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginBottom="332dp"
+        android:text="Test"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

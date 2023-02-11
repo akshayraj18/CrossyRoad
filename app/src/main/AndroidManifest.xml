@@ -24,6 +24,10 @@
             android:name=".ConfigActivity"
             >
         </activity>
+        <activity
+            android:name=".GameActivity"
+            >
+        </activity>
     </application>
 
 </manifest>
