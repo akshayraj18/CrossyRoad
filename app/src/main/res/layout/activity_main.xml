@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".WelcomeActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/play"
         android:layout_width="317dp"
         android:layout_height="50dp"
         android:layout_marginBottom="68dp"
-        android:text="Play"
+        android:text="Start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -48,9 +48,11 @@
         android:id="@+id/imageView"
         android:layout_width="274dp"
         android:layout_height="325dp"
+        android:layout_marginTop="280dp"
         android:layout_marginBottom="92dp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
