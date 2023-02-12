@@ -1,10 +1,7 @@
 package com.example.crossroad1;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,8 +9,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 public class ConfigActivity extends AppCompatActivity {
     private ImageView imageView;
@@ -49,32 +44,35 @@ public class ConfigActivity extends AppCompatActivity {
             }
         });
         sprite.setOnCheckedChangeListener((group, checkedId) -> {
-            switch (checkedId){
+            switch (checkedId) {
                 case R.id.mj:
                     goat = Sprite.MJ;
                     imageView.setImageDrawable(getResources().getDrawable((R.drawable.mj)));
                     break;
-                case R.id.lbj:
-                    goat = Sprite.LBJ;
+                case R.id.lbj: goat = Sprite.LBJ;
                     imageView.setImageDrawable(getResources().getDrawable((R.drawable.lebron)));
                     break;
-                case R.id.shaq:
-                    goat = Sprite.SHAQ;
+                case R.id.shaq: goat = Sprite.SHAQ;
                     imageView.setImageDrawable(getResources().getDrawable((R.drawable.shaq)));
                     break;
+                default:
+                    break;
             }
-        });
+        }
+        );
         mode.setOnCheckedChangeListener((group, checkedId) -> {
-            switch (checkedId){
-                case R.id.easy:
-                    diff = Difficulty.EASY;
-                    break;
-                case R.id.med:
-                    diff = Difficulty.MEDIUM;
-                    break;
-                case R.id.hard:
-                    diff = Difficulty.HARD;
-                    break;
+            switch (checkedId) {
+            case R.id.easy:
+                diff = Difficulty.EASY;
+                break;
+            case R.id.med:
+                diff = Difficulty.MEDIUM;
+                break;
+            case R.id.hard:
+                diff = Difficulty.HARD;
+                break;
+            default:
+                break;
             }
         });
         Button play = (Button) findViewById(R.id.Play);
