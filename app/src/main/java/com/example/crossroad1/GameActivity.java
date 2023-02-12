@@ -19,6 +19,8 @@ public class GameActivity  extends AppCompatActivity {
         difficultyLevel.setText("Difficulty Level: " + goat.getDifficulty());
         TextView playerName = findViewById(R.id.displayName);
         playerName.setText("Player Name: " + goat.getName());
+        TextView playerPoints = findViewById(R.id.points);
+        playerPoints.setText("Points: " + goat.getPoints());
         ImageView imageView = findViewById(R.id.playerAvatar);
         if (goat.getSprite() == Sprite.MJ) {
             imageView.setImageDrawable(getResources().getDrawable((R.drawable.mj)));

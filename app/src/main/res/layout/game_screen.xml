@@ -45,6 +45,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/displayLives" />
 
+    <TextView
+        android:id="@+id/points"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="Points:"
+        android:textSize="10pt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/difficultyLevel" />
+
     <ImageView
         android:id="@+id/playerAvatar"
         android:layout_width="93dp"
