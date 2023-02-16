@@ -78,7 +78,7 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/chungus" />
+        app:srcCompat="@drawable/left" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/right"
@@ -89,7 +89,7 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/lebron" />
+        app:srcCompat="@drawable/right" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/down"
@@ -100,7 +100,7 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/shaq" />
+        app:srcCompat="@drawable/down" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/up"
@@ -111,6 +111,6 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/mj" />
+        app:srcCompat="@drawable/up" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

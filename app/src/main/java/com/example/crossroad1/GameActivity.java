@@ -6,37 +6,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 public class GameActivity  extends AppCompatActivity {
 
     GridView androidGridView;
-    int mj = R.drawable.mj;
-    int lbj = R.drawable.lebron;
-    int shaq = R.drawable.shaq;
-    Integer[] imageIDs = {
-            mj, lbj, shaq, mj, lbj, shaq, mj, lbj,
-            mj, lbj, shaq, mj, lbj, shaq, mj, lbj,
-            mj, lbj, shaq, mj, lbj, shaq, mj, lbj,
-            mj, lbj, shaq, mj, lbj, shaq, mj, lbj,
-            mj, lbj, shaq, mj, lbj, shaq, mj, lbj,
-            mj, lbj, shaq, mj, lbj, shaq, mj, lbj,
-            mj, lbj, shaq, mj, lbj, shaq, mj, lbj,
-            mj, lbj, shaq, mj, lbj, shaq, mj, lbj,
-            mj, lbj, shaq, mj, lbj, shaq, mj, lbj,
-            mj, lbj, shaq, mj, lbj, shaq, mj, lbj,
-            mj, lbj, shaq, mj, lbj, shaq, mj, lbj,
-    };
+    Tile[] tiles;
+    Grid grid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_screen);
+        grid = new Grid();
+        tiles = grid.getTiles();
         androidGridView = (GridView) findViewById(R.id.gridview);
         androidGridView.setAdapter(new ImageAdapterGridView(this));
 
@@ -60,7 +46,7 @@ public class GameActivity  extends AppCompatActivity {
         }
 
         public int getCount() {
-            return imageIDs.length;
+            return tiles.length;
         }
 
         public Object getItem(int position) {
@@ -82,7 +68,7 @@ public class GameActivity  extends AppCompatActivity {
             } else {
                 mImageView = (ImageView) convertView;
             }
-            mImageView.setImageResource(imageIDs[position]);
+            mImageView.setImageResource(tiles[position].getImage());
             return mImageView;
         }
     }

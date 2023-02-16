@@ -9,8 +9,4 @@ public class Coordinate {
         this.x = x;
         this.y = y;
     }
-
-    public static Coordinate convertToDP(int x, int y) {
-        return new Coordinate((x * 50) + 25, (y * 50) + 25);
-    }
 }

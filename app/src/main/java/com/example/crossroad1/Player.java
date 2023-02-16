@@ -6,6 +6,7 @@ public class Player {
     private String name;
     private Sprite sprite;
     private Difficulty difficulty;
+    private int image;
 
     public Player(String name, Sprite sprite, Difficulty difficulty) {
         this.name = name;
@@ -13,6 +14,15 @@ public class Player {
         this.lives = difficulty.ordinal() + 1; // hard is 1 lives, medium is 2, easy is 3
         this.difficulty = difficulty;
         this.points = 0;
+        if (sprite == Sprite.MJ) {
+            image = R.drawable.jordan;
+        }
+        if (sprite == Sprite.LBJ) {
+            image = R.drawable.lebron;
+        }
+        else {
+            image = R.drawable.shaq;
+        }
     }
 
     public int getLives() {
@@ -33,5 +43,9 @@ public class Player {
 
     public Difficulty getDifficulty() {
         return difficulty;
+    }
+
+    public int getImage() {
+        return image;
     }
 }

@@ -47,7 +47,7 @@ public class ConfigActivity extends AppCompatActivity {
             switch (checkedId) {
                 case R.id.mj:
                     goat = Sprite.MJ;
-                    imageView.setImageDrawable(getResources().getDrawable((R.drawable.mj)));
+                    imageView.setImageDrawable(getResources().getDrawable((R.drawable.jordan)));
                     break;
                 case R.id.lbj: goat = Sprite.LBJ;
                     imageView.setImageDrawable(getResources().getDrawable((R.drawable.lebron)));
