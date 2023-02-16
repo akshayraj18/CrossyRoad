@@ -17,7 +17,7 @@ public class Player {
         if (sprite == Sprite.MJ) {
             image = R.drawable.jordan;
         }
-        if (sprite == Sprite.LBJ) {
+        else if (sprite == Sprite.LBJ) {
             image = R.drawable.lebron;
         }
         else {

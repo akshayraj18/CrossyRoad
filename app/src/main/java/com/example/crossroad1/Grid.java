@@ -1,5 +1,4 @@
 package com.example.crossroad1;
-import java.util.HashMap;
 
 public class Grid {
     // player coordinates
