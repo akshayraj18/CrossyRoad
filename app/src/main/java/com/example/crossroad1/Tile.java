@@ -15,6 +15,12 @@ public abstract class Tile {
         return hasSprite ? ConfigActivity.getPlayer().getImage(): image;
     }
 
+    public void setImage() {
+        if (hasSprite) {
+            this.image = ConfigActivity.getPlayer().getImage();
+        }
+    }
+
     public boolean hasSprite() {
         return hasSprite;
     }

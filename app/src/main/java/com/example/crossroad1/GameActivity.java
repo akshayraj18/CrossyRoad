@@ -53,6 +53,8 @@ public class GameActivity  extends AppCompatActivity {
                 System.out.println(Grid.getTile());
                 System.out.println(Coordinate.getX());
                 System.out.println(Coordinate.getY());
+                tiles = grid.getTiles();
+                return;
             }
         });
     }

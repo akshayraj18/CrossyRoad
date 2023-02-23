@@ -67,10 +67,11 @@ public class Grid {
     public void moveLeft() {
       playerCoord.moveLeft();
       tiles[tile].removeSprite();
-      tiles[tile].getImage();
+      tiles[tile].setImage();
       tile -= 1;
       tiles[tile].addSprite();
-      tiles[tile].getImage();
+      tiles[tile].setImage();
+      return;
     }
 //    public void moveRight() {
 //        playerCoord = new Coordinate(playerCoord.x + 1,  playerCoord.y);
