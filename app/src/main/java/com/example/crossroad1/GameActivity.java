@@ -1,15 +1,20 @@
 package com.example.crossroad1;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.ImageView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 
 public class GameActivity  extends AppCompatActivity {
 
@@ -36,7 +41,20 @@ public class GameActivity  extends AppCompatActivity {
         TextView playerPoints = findViewById(R.id.points);
         playerPoints.setText("Points: " + goat.getPoints());
 
+        FloatingActionButton left = (FloatingActionButton) findViewById(R.id.left);
+        //Button right = (Button) findViewById(R.id.right);
+        //Button up = (Button) findViewById(R.id.up);
+        //Button down = (Button) findViewById(R.id.down);
 
+        left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                grid.moveLeft();
+                System.out.println(Grid.getTile());
+                System.out.println(Coordinate.getX());
+                System.out.println(Coordinate.getY());
+            }
+        });
     }
     public class ImageAdapterGridView extends BaseAdapter {
         private Context mContext;

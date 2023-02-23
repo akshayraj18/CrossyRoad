@@ -48,4 +48,5 @@ public class Player {
     public int getImage() {
         return image;
     }
+
 }

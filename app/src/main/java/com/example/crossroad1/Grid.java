@@ -4,8 +4,10 @@ public class Grid {
     // player coordinates
     private Coordinate playerCoord;
     private Tile[] tiles;
+
+    private static int tile = 84;
     public Grid() {
-        tiles = new Tile[8*11]; // col*rows
+        tiles = new Tile[8*11]; // cols*rows
         // manual creation, change if you want later
         // goal: 0
         // safe: 1
@@ -34,8 +36,8 @@ public class Grid {
                 }
             }
         }
-        tiles[84].addSprite();
-        playerCoord = new Coordinate(8, 4);
+        tiles[tile].addSprite();
+        playerCoord = new Coordinate(4, 11);
     }
 
     public Tile[] getTiles() {
@@ -54,13 +56,22 @@ public class Grid {
         return playerCoord;
     }
 
+    public static int getTile() {
+        return tile;
+    }
+
     // player movement needed for sprint 1
     // process for not going outside of grid
     // called depending onKeyPress
     // Note: these methods are not done
-//    public void moveLeft() {
-//       playerCoord = new Coordinate(playerCoord.x - 1,  playerCoord.y);
-//    }
+    public void moveLeft() {
+      playerCoord.moveLeft();
+      tiles[tile].removeSprite();
+      tiles[tile].getImage();
+      tile -= 1;
+      tiles[tile].addSprite();
+      tiles[tile].getImage();
+    }
 //    public void moveRight() {
 //        playerCoord = new Coordinate(playerCoord.x + 1,  playerCoord.y);
 //    }
