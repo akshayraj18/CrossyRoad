@@ -2,7 +2,7 @@ package com.example.crossroad1;
 
 public class Grid {
     // player coordinates
-    private Coordinate playerCoord;
+    private static Coordinate playerCoord;
     private Tile[] tiles;
 
     private static int tile = 84;
@@ -52,7 +52,7 @@ public class Grid {
         return getTile(coord.x, coord.y);
     }
 
-    public Coordinate getPlayerCoord() {
+    public static Coordinate getPlayerCoord() {
         return playerCoord;
     }
 
@@ -65,13 +65,49 @@ public class Grid {
     // called depending onKeyPress
     // Note: these methods are not done
     public void moveLeft() {
-      playerCoord.moveLeft();
-      tiles[tile].removeSprite();
-      tiles[tile].setImage();
-      tile -= 1;
-      tiles[tile].addSprite();
-      tiles[tile].setImage();
-      return;
+        if (getPlayerCoord().getX() > 0) {
+            playerCoord.moveLeft();
+            tiles[tile].removeSprite();
+            tiles[tile].setImage();
+            tile -= 1;
+            tiles[tile].addSprite();
+            tiles[tile].setImage();
+        }
+    }
+
+    public void moveRight() {
+        if (getPlayerCoord().getX() < 7) {
+            playerCoord.moveRight();
+            tiles[tile].removeSprite();
+            tiles[tile].setImage();
+            tile += 1;
+            tiles[tile].addSprite();
+            tiles[tile].setImage();
+        }
+    }
+
+    public void moveUp() {
+        if (getPlayerCoord().getY() > 1) {
+            playerCoord.moveUp();
+            tiles[tile].removeSprite();
+            tiles[tile].setImage();
+            tile -= 8;
+            tiles[tile].addSprite();
+            tiles[tile].setImage();
+        }
+
+    }
+
+    public void moveDown() {
+        if (getPlayerCoord().getY() < 11) {
+            playerCoord.moveDown();
+            tiles[tile].removeSprite();
+            tiles[tile].setImage();
+            tile += 8;
+            tiles[tile].addSprite();
+            tiles[tile].setImage();
+        }
+
     }
 //    public void moveRight() {
 //        playerCoord = new Coordinate(playerCoord.x + 1,  playerCoord.y);

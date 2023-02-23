@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
@@ -22,6 +23,8 @@ public class GameActivity  extends AppCompatActivity {
     Tile[] tiles;
     Grid grid;
 
+    ImageAdapterGridView adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +32,8 @@ public class GameActivity  extends AppCompatActivity {
         grid = new Grid();
         tiles = grid.getTiles();
         androidGridView = (GridView) findViewById(R.id.gridview);
-        androidGridView.setAdapter(new ImageAdapterGridView(this));
-
+        adapter = new ImageAdapterGridView(this);
+        androidGridView.setAdapter(adapter);
         Player goat = ConfigActivity.getPlayer();
         TextView remainingLives = findViewById(R.id.displayLives);
         remainingLives.setText("Remaining Lives: " + goat.getLives());
@@ -42,9 +45,9 @@ public class GameActivity  extends AppCompatActivity {
         playerPoints.setText("Points: " + goat.getPoints());
 
         FloatingActionButton left = (FloatingActionButton) findViewById(R.id.left);
-        //Button right = (Button) findViewById(R.id.right);
-        //Button up = (Button) findViewById(R.id.up);
-        //Button down = (Button) findViewById(R.id.down);
+        FloatingActionButton right = (FloatingActionButton) findViewById(R.id.right);
+        FloatingActionButton up = (FloatingActionButton) findViewById(R.id.up);
+        FloatingActionButton down = (FloatingActionButton) findViewById(R.id.down);
 
         left.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,8 +56,43 @@ public class GameActivity  extends AppCompatActivity {
                 System.out.println(Grid.getTile());
                 System.out.println(Coordinate.getX());
                 System.out.println(Coordinate.getY());
-                tiles = grid.getTiles();
-                return;
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+        right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                grid.moveRight();
+                System.out.println(Grid.getTile());
+                System.out.println(Coordinate.getX());
+                System.out.println(Coordinate.getY());
+                adapter.notifyDataSetChanged();
+
+            }
+        });
+
+        up.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                grid.moveUp();
+                System.out.println(Grid.getTile());
+                System.out.println(Coordinate.getX());
+                System.out.println(Coordinate.getY());
+                adapter.notifyDataSetChanged();
+
+            }
+        });
+
+        down.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                grid.moveDown();
+                System.out.println(Grid.getTile());
+                System.out.println(Coordinate.getX());
+                System.out.println(Coordinate.getY());
+                adapter.notifyDataSetChanged();
+
             }
         });
     }

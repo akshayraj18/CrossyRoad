@@ -19,11 +19,11 @@ public class Coordinate {
     }
 
     public void moveUp() {
-        this.y += 1;
+        this.y -= 1;
     }
 
     public void moveDown() {
-        this.y -= 1;
+        this.y += 1;
     }
 
     public static int getX() {

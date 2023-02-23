@@ -6,9 +6,12 @@ public abstract class Tile {
     private int image;
     private boolean hasSprite;
 
+    private final int tileType;
+
     public Tile(Coordinate coord, int image) {
         this.coord = coord;
         this.image = image;
+        tileType = image;
     }
 
     public int getImage() {
@@ -16,8 +19,11 @@ public abstract class Tile {
     }
 
     public void setImage() {
+        int y = Grid.getPlayerCoord().getY();
         if (hasSprite) {
             this.image = ConfigActivity.getPlayer().getImage();
+        } else {
+            this.image = tileType;
         }
     }
 
