@@ -2,8 +2,8 @@ package com.example.crossroad1;
 
 public class Coordinate {
     // grid x and y
-    static int x;
-    static int y;
+    private static int x;
+    private static int y;
 
     public Coordinate(int x, int y) {
         this.x = x;
