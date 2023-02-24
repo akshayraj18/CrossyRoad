@@ -109,15 +109,6 @@ public class Grid {
         }
 
     }
-//    public void moveRight() {
-//        playerCoord = new Coordinate(playerCoord.x + 1,  playerCoord.y);
-//    }
-//    public void moveUp() {
-//        playerCoord = new Coordinate(playerCoord.x - 1,  playerCoord.y + 1);
-//    }
-//    public void MoveDown() {
-//        playerCoord = new Coordinate(playerCoord.x,  playerCoord.y - 1);
-//    }
 
 
     // future sprint stuff
