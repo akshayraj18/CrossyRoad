@@ -14,7 +14,7 @@ public class ConfigActivity extends AppCompatActivity {
     private ImageView imageView;
     private Difficulty diff = Difficulty.EASY;
     private TextView alertTextView;
-    private static Player player;
+    private static Player player = new Player("Sriharsha Kocherla", Sprite.MJ, Difficulty.HARD);
     private Sprite goat = Sprite.MJ;
 
     @SuppressLint({"NonConstantResourceId", "UseCompatLoadingForDrawables"})
