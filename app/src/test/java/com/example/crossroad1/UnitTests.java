@@ -17,4 +17,17 @@ public class UnitTests {
         grid.moveRight();
         assertEquals(5,grid.getPlayerCoord().getX());
     }
+
+    @Test
+    public void canMoveUp() {
+        grid.moveUp();
+        assertEquals(10,grid.getPlayerCoord().getY());
+    }
+
+    @Test
+    public void canMoveDown() {
+        grid.moveUp();
+        grid.moveDown();
+        assertEquals(11,grid.getPlayerCoord().getY());
+    }
 }
