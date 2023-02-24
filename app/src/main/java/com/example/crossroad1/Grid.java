@@ -20,7 +20,7 @@ public class Grid {
                 if (r == 4 || r == 10) {
                     // safe: cloud
                     tiles[r * 8 + c] = new CloudTile(new Coordinate(r, c));
-                } else if (r == 2 || r == 3 || r == 8 || r == 9) {
+                } else if (r == 1 || r == 2 || r == 3) {
                     // river: stream
                     tiles[r * 8 + c] = new StreamTile(new Coordinate(r, c));
                 } else if (r == 0) {
