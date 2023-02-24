@@ -15,19 +15,48 @@ public class UnitTests {
     @Test
     public void canMoveRight() {
         grid.moveRight();
-        assertEquals(5,grid.getPlayerCoord().getX());
+        assertEquals(5, grid.getPlayerCoord().getX());
     }
 
     @Test
     public void canMoveUp() {
         grid.moveUp();
-        assertEquals(10,grid.getPlayerCoord().getY());
+        assertEquals(10, grid.getPlayerCoord().getY());
     }
 
     @Test
     public void canMoveDown() {
         grid.moveUp();
         grid.moveDown();
-        assertEquals(11,grid.getPlayerCoord().getY());
+        assertEquals(11, grid.getPlayerCoord().getY());
+    }
+
+    @Test
+    public void leftOutOfBoundsCheck() {
+        grid.moveLeft();
+        grid.moveLeft();
+        grid.moveLeft();
+        grid.moveLeft();
+        assertEquals(0, grid.getPlayerCoord().getX());
+        grid.moveLeft();
+        assertEquals(0, grid.getPlayerCoord().getX());
+        grid.moveRight();
+        grid.moveLeft();
+        assertEquals(0, grid.getPlayerCoord().getX());
+
+    }
+
+    @Test
+    public void rightOutOfBoundsCheck() {
+        grid.moveRight();
+        grid.moveRight();
+        grid.moveRight();
+        grid.moveRight();
+        assertEquals(7, grid.getPlayerCoord().getX());
+        grid.moveRight();
+        assertEquals(7, grid.getPlayerCoord().getX());
+        grid.moveLeft();
+        grid.moveRight();
+        assertEquals(7, grid.getPlayerCoord().getX());
     }
 }
