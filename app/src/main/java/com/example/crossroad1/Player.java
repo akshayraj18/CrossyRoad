@@ -16,11 +16,9 @@ public class Player {
         this.points = 0;
         if (sprite == Sprite.MJ) {
             image = R.drawable.jordan;
-        }
-        else if (sprite == Sprite.LBJ) {
+        } else if (sprite == Sprite.LBJ) {
             image = R.drawable.lebron;
-        }
-        else {
+        } else {
             image = R.drawable.shaq;
         }
     }

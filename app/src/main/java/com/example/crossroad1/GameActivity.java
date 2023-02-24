@@ -1,15 +1,11 @@
 package com.example.crossroad1;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.ImageView;
@@ -18,12 +14,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class GameActivity  extends AppCompatActivity {
-
-    GridView androidGridView;
-    Tile[] tiles;
-    Grid grid;
-
-    ImageAdapterGridView adapter;
+    private Tile[] tiles;
+    private Grid grid;
+    private ImageAdapterGridView adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +24,7 @@ public class GameActivity  extends AppCompatActivity {
         setContentView(R.layout.game_screen);
         grid = new Grid();
         tiles = grid.getTiles();
-        androidGridView = (GridView) findViewById(R.id.gridview);
+        GridView androidGridView = findViewById(R.id.gridview);
         adapter = new ImageAdapterGridView(this);
         androidGridView.setAdapter(adapter);
         Player goat = ConfigActivity.getPlayer();
@@ -44,18 +37,15 @@ public class GameActivity  extends AppCompatActivity {
         TextView playerPoints = findViewById(R.id.points);
         playerPoints.setText("Points: " + goat.getPoints());
 
-        FloatingActionButton left = (FloatingActionButton) findViewById(R.id.left);
-        FloatingActionButton right = (FloatingActionButton) findViewById(R.id.right);
-        FloatingActionButton up = (FloatingActionButton) findViewById(R.id.up);
-        FloatingActionButton down = (FloatingActionButton) findViewById(R.id.down);
+        FloatingActionButton left = findViewById(R.id.left);
+        FloatingActionButton right = findViewById(R.id.right);
+        FloatingActionButton up = findViewById(R.id.up);
+        FloatingActionButton down = findViewById(R.id.down);
 
         left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 grid.moveLeft();
-                System.out.println(Grid.getTile());
-                System.out.println(Coordinate.getX());
-                System.out.println(Coordinate.getY());
                 adapter.notifyDataSetChanged();
             }
         });
@@ -64,11 +54,7 @@ public class GameActivity  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 grid.moveRight();
-                System.out.println(Grid.getTile());
-                System.out.println(Coordinate.getX());
-                System.out.println(Coordinate.getY());
                 adapter.notifyDataSetChanged();
-
             }
         });
 
@@ -76,11 +62,7 @@ public class GameActivity  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 grid.moveUp();
-                System.out.println(Grid.getTile());
-                System.out.println(Coordinate.getX());
-                System.out.println(Coordinate.getY());
                 adapter.notifyDataSetChanged();
-
             }
         });
 
@@ -88,16 +70,14 @@ public class GameActivity  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 grid.moveDown();
-                System.out.println(Grid.getTile());
-                System.out.println(Coordinate.getX());
-                System.out.println(Coordinate.getY());
                 adapter.notifyDataSetChanged();
-
             }
         });
     }
+
+
     public class ImageAdapterGridView extends BaseAdapter {
-        private Context mContext;
+        private final Context mContext;
 
         public ImageAdapterGridView(Context c) {
             mContext = c;
