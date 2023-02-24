@@ -15,11 +15,10 @@ public abstract class Tile {
     }
 
     public int getImage() {
-        return hasSprite ? ConfigActivity.getPlayer().getImage(): image;
+        return hasSprite ? ConfigActivity.getPlayer().getImage() : image;
     }
 
     public void setImage() {
-        int y = Grid.getPlayerCoord().getY();
         if (hasSprite) {
             this.image = ConfigActivity.getPlayer().getImage();
         } else {

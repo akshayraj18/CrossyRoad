@@ -2,28 +2,28 @@ package com.example.crossroad1;
 
 public class Coordinate {
     // grid x and y
-    private static int x;
-    private static int y;
+    public static int x;
+    public static int y;
 
     public Coordinate(int x, int y) {
-        this.x = x;
-        this.y = y;
+        Coordinate.x = x;
+        Coordinate.y = y;
     }
 
     public void moveLeft() {
-        this.x -= 1;
+        x -= 1;
     }
 
     public void moveRight() {
-        this.x += 1;
+        x += 1;
     }
 
     public void moveUp() {
-        this.y -= 1;
+        y -= 1;
     }
 
     public void moveDown() {
-        this.y += 1;
+        y += 1;
     }
 
     public static int getX() {

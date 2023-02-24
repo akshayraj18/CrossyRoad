@@ -3,12 +3,11 @@ package com.example.crossroad1;
 public class Grid {
     // player coordinates
     private static Coordinate playerCoord;
-    private Tile[] tiles;
+    private final Tile[] tiles;
 
     private static int tile = 84;
     public Grid() {
         tiles = new Tile[8 * 11]; // cols*rows
-        // manual creation, change if you want later
         // goal: 0
         // safe: 1
         // river: 2-3
@@ -43,10 +42,6 @@ public class Grid {
 
     public Tile getTile(int x, int y) {
         return tiles[x * 8 + y];
-    }
-
-    public Tile getTile(Coordinate coord) {
-        return getTile(Coordinate.getX(), Coordinate.getY());
     }
 
     public static Coordinate getPlayerCoord() {
@@ -106,5 +101,4 @@ public class Grid {
         }
 
     }
-
 }
