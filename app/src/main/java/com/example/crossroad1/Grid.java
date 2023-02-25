@@ -41,7 +41,7 @@ public class Grid {
     }
 
     public Tile getTile(int x, int y) {
-        return tiles[x * 8 + y];
+        return tiles[x + (y - 1) * 8];
     }
 
     public static Coordinate getPlayerCoord() {
