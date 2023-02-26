@@ -117,4 +117,16 @@ public class UnitTests {
         assertEquals(3, grid.getPlayerCoord().getX());
         assertEquals(8, grid.getPlayerCoord().getY());
     }
+
+    @Test
+    public void checkSprite() {
+        Player p1 = new Player("goat", Sprite.MJ, Difficulty.EASY);
+        assertEquals(Sprite.MJ, p1.getSprite());
+    }
+
+    @Test
+    public void checkLives() {
+        Player p1 = new Player("goat", Sprite.MJ, Difficulty.EASY);
+        assertEquals(3, p1.getLives());
+    }
 }
