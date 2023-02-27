@@ -5,7 +5,7 @@ public class Grid {
     private static Coordinate playerCoord;
     private final Tile[] tiles;
 
-    private static int tile = 84;
+    private int tile = 84;
     public Grid() {
         tiles = new Tile[8 * 11]; // cols*rows
         // goal: 0
@@ -48,7 +48,7 @@ public class Grid {
         return playerCoord;
     }
 
-    public static int getTile() {
+    public int getTile() {
         return tile;
     }
 

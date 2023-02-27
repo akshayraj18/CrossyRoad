@@ -3,31 +3,35 @@ package com.example.crossroad1;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import java.beans.Transient;
+
 
 public class UnitTests {
-    private Grid grid = new Grid();
+    private Grid grid;
 
     @Test
     public void canMoveLeft() {
+        grid = new Grid();
         grid.moveLeft();
         assertEquals(3, grid.getPlayerCoord().getX());
     }
 
     @Test
     public void canMoveRight() {
+        grid = new Grid();
         grid.moveRight();
         assertEquals(5, grid.getPlayerCoord().getX());
     }
 
     @Test
     public void canMoveUp() {
+        grid = new Grid();
         grid.moveUp();
         assertEquals(10, grid.getPlayerCoord().getY());
     }
 
     @Test
     public void canMoveDown() {
+        grid = new Grid();
         grid.moveUp();
         grid.moveDown();
         assertEquals(11, grid.getPlayerCoord().getY());
@@ -35,20 +39,23 @@ public class UnitTests {
 
     @Test
     public void upOutOfBoundsCheck() {
+        grid = new Grid();
         for (int i = 0; i <= 10; i++) {
             grid.moveUp();
         }
-        assertEquals(1, grid.getPlayerCoord.getY());
+        assertEquals(1, grid.getPlayerCoord().getY());
     }
 
     @Test
     public void downOutOfBoundsCheck() {
+        grid = new Grid();
         grid.moveDown();
-        assertEquals(11, grid.getPlayerCoord.getY());
+        assertEquals(11, grid.getPlayerCoord().getY());
     }
 
     @Test
     public void leftOutOfBoundsCheck() {
+        grid = new Grid();
         grid.moveLeft();
         grid.moveLeft();
         grid.moveLeft();
@@ -64,6 +71,7 @@ public class UnitTests {
 
     @Test
     public void rightOutOfBoundsCheck() {
+        grid = new Grid();
         grid.moveRight();
         grid.moveRight();
         grid.moveRight();
@@ -78,6 +86,7 @@ public class UnitTests {
 
     @Test
     public void checkCombinationSpriteMovement1() {
+        grid = new Grid();
         grid.moveRight();
         grid.moveUp();
         grid.moveLeft();
@@ -92,6 +101,7 @@ public class UnitTests {
 
     @Test
     public void checkCombinationSpriteMovement2() {
+        grid = new Grid();
         grid.moveRight();
         grid.moveUp();
         grid.moveLeft();
