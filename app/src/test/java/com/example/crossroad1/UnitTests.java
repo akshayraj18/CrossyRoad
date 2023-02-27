@@ -3,8 +3,6 @@ package com.example.crossroad1;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import java.beans.Transient;
-
 public class UnitTests {
     private Grid grid = new Grid();
 
@@ -38,13 +36,13 @@ public class UnitTests {
         for (int i = 0; i <= 10; i++) {
             grid.moveUp();
         }
-        assertEquals(1, grid.getPlayerCoord.getY());
+        assertEquals(1, grid.getPlayerCoord().getY());
     }
 
     @Test
     public void downOutOfBoundsCheck() {
         grid.moveDown();
-        assertEquals(11, grid.getPlayerCoord.getY());
+        assertEquals(11, grid.getPlayerCoord().getY());
     }
 
     @Test
