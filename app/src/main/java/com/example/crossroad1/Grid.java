@@ -36,17 +36,21 @@ public class Grid {
         public void run() {
             // call the update vehicles, tiles, etc.
             if (getCarCoord1().getX() > 0) {
-                tiles[carTile1].removeSprite();
                 carCoord1.moveLeft();
+                tiles[carTile1].removeCar();
+                tiles[carTile1].setImage();
                 carTile1 -= 1;
-                tiles[carTile1] = new CarTile(carCoord1);
+                tiles[carTile1].addCar();
+                tiles[carTile1].setImage();
                 GameActivity.adapter.notifyDataSetChanged();
             } else {
-                tiles[carTile1].removeSprite();
                 carCoord1.setX(7);
                 carCoord1.setY(10);
+                tiles[carTile1].removeCar();
+                tiles[carTile1].setImage();
                 carTile1 += 7;
-                tiles[carTile1] = new CarTile(carCoord1);
+                tiles[carTile1].addCar();
+                tiles[carTile1].setImage();
                 GameActivity.adapter.notifyDataSetChanged();
             }
             handler.postDelayed(this, 1000); // Call the clock again
@@ -58,28 +62,36 @@ public class Grid {
         public void run() {
             // call the update vehicles, tiles, etc.
             if (getUfoCoord1().getX() < 7) {
-                tiles[ufoTile1].removeSprite();
                 ufoCoord1.moveRight();
+                tiles[ufoTile1].removeUFO();
+                tiles[ufoTile1].setImage();
                 ufoTile1 += 1;
-                tiles[ufoTile1] = new UFOTile(ufoCoord1);
+                tiles[ufoTile1].addUFO();
+                tiles[ufoTile1].setImage();
             } else {
-                tiles[ufoTile1].removeSprite();
                 ufoCoord1.setX(0);
                 ufoCoord1.setY(9);
+                tiles[ufoTile1].removeUFO();
+                tiles[ufoTile1].setImage();
                 ufoTile1 -= 7;
-                tiles[ufoTile1] = new UFOTile(ufoCoord1);
+                tiles[ufoTile1].addUFO();
+                tiles[ufoTile1].setImage();
             }
             if (getUfoCoord2().getX() < 7) {
-                tiles[ufoTile2].removeSprite();
                 ufoCoord2.moveRight();
+                tiles[ufoTile2].removeUFO();
+                tiles[ufoTile2].setImage();
                 ufoTile2 += 1;
-                tiles[ufoTile2] = new UFOTile(ufoCoord2);
+                tiles[ufoTile2].addUFO();
+                tiles[ufoTile2].setImage();
             } else {
-                tiles[ufoTile2].removeSprite();
                 ufoCoord2.setX(0);
                 ufoCoord2.setY(7);
+                tiles[ufoTile2].removeUFO();
+                tiles[ufoTile1].setImage();
                 ufoTile2 -= 7;
-                tiles[ufoTile2] = new UFOTile(ufoCoord2);
+                tiles[ufoTile2].addUFO();
+                tiles[ufoTile2].setImage();
             }
             GameActivity.adapter.notifyDataSetChanged();
             handler.postDelayed(this, 750); // Call the clock again
@@ -91,28 +103,36 @@ public class Grid {
         public void run() {
             // call the update vehicles, tiles, etc.
             if (getJetCoord1().getX() > 0) {
-                tiles[jetTile1].removeSprite();
                 jetCoord1.moveLeft();
+                tiles[jetTile1].removeJet();
+                tiles[jetTile1].setImage();
                 jetTile1 -= 1;
-                tiles[jetTile1] = new JetTile(jetCoord1);
+                tiles[jetTile1].addJet();
+                tiles[jetTile1].setImage();
             } else {
-                tiles[jetTile1].removeSprite();
                 jetCoord1.setX(7);
                 jetCoord1.setY(8);
+                tiles[jetTile1].removeJet();
+                tiles[jetTile1].setImage();
                 jetTile1 += 7;
-                tiles[jetTile1] = new JetTile(jetCoord1);
+                tiles[jetTile1].addJet();
+                tiles[jetTile1].setImage();
             }
             if (getJetCoord2().getX() > 0) {
-                tiles[jetTile2].removeSprite();
                 jetCoord2.moveLeft();
+                tiles[jetTile2].removeJet();
+                tiles[jetTile2].setImage();
                 jetTile2 -= 1;
-                tiles[jetTile2] = new JetTile(jetCoord2);
+                tiles[jetTile2].addJet();
+                tiles[jetTile2].setImage();
             } else {
-                tiles[jetTile2].removeSprite();
                 jetCoord2.setX(7);
                 jetCoord2.setY(6);
+                tiles[jetTile2].removeJet();
+                tiles[jetTile2].setImage();
                 jetTile2 += 7;
-                tiles[jetTile2] = new JetTile(jetCoord2);
+                tiles[jetTile2].addJet();
+                tiles[jetTile2].setImage();
             }
             GameActivity.adapter.notifyDataSetChanged();
             handler.postDelayed(this, 500); // Call the clock again
@@ -149,11 +169,11 @@ public class Grid {
             }
         }
         tiles[playerTile].addSprite();
-        tiles[carTile1] = new CarTile(new Coordinate(7, 10));
-        tiles[ufoTile1] = new UFOTile(new Coordinate(0, 9));
-        tiles[jetTile1] = new JetTile(new Coordinate(7, 8));
-        tiles[ufoTile2] = new UFOTile(new Coordinate(0,7));
-        tiles[jetTile2] = new JetTile(new Coordinate(7,6));
+        tiles[carTile1].addCar();
+        tiles[ufoTile1].addUFO();
+        tiles[ufoTile2].addUFO();
+        tiles[jetTile1].addJet();
+        tiles[jetTile2].addJet();
         playerCoord = new Coordinate(4, 11);
         carCoord1 = new Coordinate(7, 10);
         ufoCoord1 = new Coordinate(0,9);
