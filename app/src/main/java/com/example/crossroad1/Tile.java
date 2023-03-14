@@ -7,6 +7,10 @@ public abstract class Tile {
     private boolean hasPlayerSprite;
     protected int tileType;
 
+    private boolean hasCar;
+    private boolean hasJet;
+    private boolean hasUFO;
+
     public Tile() {
         tileType = playerImage;
     }
@@ -18,12 +22,32 @@ public abstract class Tile {
     }
 
     public int getImage() {
-        return hasPlayerSprite ? ConfigActivity.getPlayer().getImage() : playerImage;
+        if (hasPlayerSprite) {
+            return ConfigActivity.getPlayer().getImage();
+        } else if (hasCar) {
+            return R.drawable.delorean_vehicle;
+        } else if (hasUFO) {
+            return R.drawable.ufo_vehicle;
+        } else if (hasJet) {
+            return R.drawable.jet_vehicle;
+        } else {
+            return playerImage;
+        }
     }
 
     public void setImage(int playerImage) {
         if (hasPlayerSprite) {
+<<<<<<< HEAD
             this.playerImage = playerImage;
+=======
+            this.playerImage = ConfigActivity.getPlayer().getImage();
+        } else if (hasCar) {
+            this.playerImage = tileType;
+        } else if (hasUFO) {
+            this.playerImage = tileType;
+        } else if (hasJet) {
+            this.playerImage = tileType;
+>>>>>>> c44be21cae45a55e197ecc6d6dd305841bfaf64c
         } else {
             this.playerImage = tileType;
         }
@@ -40,6 +64,30 @@ public abstract class Tile {
     public void removeSprite() {
         hasPlayerSprite = false;
 
+    }
+
+    public void addCar() {
+        hasCar = true;
+    }
+
+    public void removeCar() {
+        hasCar = false;
+    }
+
+    public void addUFO() {
+        hasUFO = true;
+    }
+
+    public void removeUFO() {
+        hasUFO = false;
+    }
+
+    public void addJet() {
+        hasJet = true;
+    }
+
+    public void removeJet() {
+        hasJet = false;
     }
 
     public void setTileType(int type) {
