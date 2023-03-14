@@ -3,7 +3,7 @@ package com.example.crossroad1;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class UnitTests {
+public class Sprite2UnitTests {
     private Grid grid = new Grid();
 
     @Test

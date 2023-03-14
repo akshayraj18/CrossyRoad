@@ -49,7 +49,7 @@ public class Grid {
         tiles[playerTile].addSprite();
         tiles[jetTile] = new JetTile(new Coordinate(7, 8));
         tiles[ufoTile] = new UFOTile(new Coordinate(0, 9));
-        tiles[carTile] = new CarTile(new Coordinate(7,10));
+        tiles[carTile] = new CarTile(new Coordinate(7, 10));
         playerCoord = new Coordinate(4, 11);
     }
 
@@ -115,6 +115,18 @@ public class Grid {
             playerTile -= 8;
             tiles[playerTile].addSprite();
             tiles[playerTile].setImage();
+            if (Grid.getPlayerCoord().getY() < Grid.getYMax()) {
+                if (Grid.getYMax() == 11) {
+                    Player.setPoints(100);
+                } else if (Grid.getYMax() == 10) {
+                    Player.setPoints(200);
+                } else if (Grid.getYMax() == 9) {
+                    Player.setPoints(300);
+                } else {
+                    Player.setPoints(50);
+                }
+                Grid.updateyMax();
+            }
         }
 
     }
