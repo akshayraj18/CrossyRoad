@@ -1,9 +1,10 @@
 package com.example.crossroad1;
 
+import android.os.Handler;
+
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Handler;
 
 public class Grid {
     // player coordinates
@@ -16,6 +17,32 @@ public class Grid {
     private int ufoTile = 64;
     private int carTile = 79;
 
+    Handler handler = new Handler();
+    Runnable carMove = new Runnable() {
+        @Override
+        public void run() {
+            // call the update vehicles, tiles, etc.
+
+            handler.postDelayed(this, 500); // Call the clock again
+        }
+    };
+
+    Runnable ufoMove = new Runnable() {
+        @Override
+        public void run() {
+            // call the update vehicles, tiles, etc.
+            handler.postDelayed(this, 750); // Call the clock again
+        }
+    };
+
+    Runnable jetMove = new Runnable() {
+        @Override
+        public void run() {
+            // call the update vehicles, tiles, etc.
+
+            handler.postDelayed(this, 1000); // Call the clock again
+        }
+    };
 
 
 
