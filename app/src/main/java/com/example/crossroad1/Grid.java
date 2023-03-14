@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class Grid {
     // player coordinates
     private static Coordinate playerCoord;
+    private static Coordinate carCoord1;
     private final Tile[] tiles;
 
     private static int yMax = 11;
@@ -22,7 +23,16 @@ public class Grid {
         @Override
         public void run() {
             // call the update vehicles, tiles, etc.
-
+            if (getCarCoord1().getX() > 0) {
+                playerCoord.moveRight();
+                tiles[carTile].removeSprite();
+                tiles[carTile].setImage();
+                carTile += 1;
+                tiles[carTile].addSprite();
+                tiles[carTile].setImage();
+            } else {
+                set
+            }
             handler.postDelayed(this, 500); // Call the clock again
         }
     };
@@ -90,6 +100,10 @@ public class Grid {
 
     public static Coordinate getPlayerCoord() {
         return playerCoord;
+    }
+
+    public static Coordinate getCarCoord1() {
+        return carCoord1;
     }
 
     public static int getYMax() {
