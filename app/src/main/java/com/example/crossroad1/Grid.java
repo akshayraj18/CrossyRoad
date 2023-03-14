@@ -24,20 +24,24 @@ public class Grid {
         public void run() {
             // call the update vehicles, tiles, etc.
             if (getCarCoord1().getX() > 0) {
-                playerCoord.moveRight();
                 tiles[carTile].removeSprite();
-                tiles[carTile].setImage();
-                carTile += 1;
-                tiles[carTile].addSprite();
-                tiles[carTile].setImage();
+                carCoord1.moveLeft();
+                carTile -= 1;
+                tiles[carTile] = new CarTile(carCoord1);
+                GameActivity.adapter.notifyDataSetChanged();
             } else {
-                set
+                tiles[carTile].removeSprite();
+                carCoord1.setX(7);
+                carCoord1.setY(10);
+                carTile += 7;
+                tiles[carTile] = new CarTile(carCoord1);
+                GameActivity.adapter.notifyDataSetChanged();
             }
             handler.postDelayed(this, 500); // Call the clock again
         }
     };
 
-    Runnable ufoMove = new Runnable() {
+    /*Runnable ufoMove = new Runnable() {
         @Override
         public void run() {
             // call the update vehicles, tiles, etc.
@@ -52,7 +56,7 @@ public class Grid {
 
             handler.postDelayed(this, 1000); // Call the clock again
         }
-    };
+    }; */
 
 
 
@@ -88,6 +92,7 @@ public class Grid {
         tiles[ufoTile] = new UFOTile(new Coordinate(0, 9));
         tiles[carTile] = new CarTile(new Coordinate(7, 10));
         playerCoord = new Coordinate(4, 11);
+        carCoord1 = new Coordinate(7, 10);
     }
 
     public Tile[] getTiles() {

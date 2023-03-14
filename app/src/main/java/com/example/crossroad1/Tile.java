@@ -5,7 +5,11 @@ public abstract class Tile {
     private Coordinate coord;
     private int playerImage;
     private boolean hasPlayerSprite;
-    private final int tileType;
+    private int tileType;
+
+    public Tile() {
+        tileType = playerImage;
+    }
 
     public Tile(Coordinate coord, int playerImage) {
         this.coord = coord;
@@ -36,4 +40,9 @@ public abstract class Tile {
     public void removeSprite() {
         hasPlayerSprite = false;
     }
+
+    public void setTileType(int type) {
+        tileType = type;
+    }
+
 }

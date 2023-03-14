@@ -1,7 +1,9 @@
 package com.example.crossroad1;
 
 public class JetTile extends Tile {
-    public JetTile(Coordinate loc) {
-        super(loc, R.drawable.jet);
-    }
+    private Coordinate jetCoord;
+    private int jetImage;
+    private boolean hasJetSprite;
+
+
 }

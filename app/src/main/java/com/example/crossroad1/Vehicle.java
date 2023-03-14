@@ -16,5 +16,9 @@ public abstract class Vehicle {
         this.image = vehicleType;
     }
 
+    public void moveLeft() {
+        coord.moveLeft();
+    }
+
 
 }
