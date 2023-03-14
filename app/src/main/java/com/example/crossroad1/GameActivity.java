@@ -63,20 +63,8 @@ public class GameActivity  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 grid.moveUp();
-                if (Grid.getPlayerCoord().getY() < Grid.getYMax()) {
-                    if (Grid.getYMax() == 11) {
-                        Player.setPoints(100);
-                    } else if (Grid.getYMax() == 10) {
-                        Player.setPoints(200);
-                    } else if (Grid.getYMax() == 9) {
-                        Player.setPoints(300);
-                    } else {
-                        Player.setPoints(50);
-                    }
-                    Grid.updateyMax();
-                    TextView playerPoints = findViewById(R.id.points);
-                    playerPoints.setText("Points: " + goat.getPoints());
-                }
+                TextView playerPoints = findViewById(R.id.points);
+                playerPoints.setText("Points: " + goat.getPoints());
                 adapter.notifyDataSetChanged();
             }
         });
