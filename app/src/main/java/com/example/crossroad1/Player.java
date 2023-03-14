@@ -47,8 +47,12 @@ public class Player {
         return image;
     }
 
-    public static void setPoints(int x) {
+    public static void addPoints(int x) {
         points += x;
+    }
+
+    public static void setPoints(int x) {
+        points = x;
     }
 
 }

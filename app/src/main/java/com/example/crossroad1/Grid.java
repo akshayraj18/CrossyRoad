@@ -267,13 +267,13 @@ public class Grid {
             tiles[playerTile].setImage();
             if (Grid.getPlayerCoord().getY() < Grid.getYMax()) {
                 if (Grid.getYMax() == 11) {
-                    Player.setPoints(100);
+                    Player.addPoints(100);
                 } else if (Grid.getYMax() == 10 || Grid.getYMax() == 8) {
-                    Player.setPoints(200);
+                    Player.addPoints(200);
                 } else if (Grid.getYMax() == 9 || Grid.getYMax() == 7) {
-                    Player.setPoints(300);
+                    Player.addPoints(300);
                 } else {
-                    Player.setPoints(50);
+                    Player.addPoints(50);
                 }
                 Grid.updateyMax();
             }
