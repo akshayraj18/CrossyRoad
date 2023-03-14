@@ -3,6 +3,8 @@ package com.example.crossroad1;
 import android.content.Context;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -37,6 +39,16 @@ public class GameActivity  extends AppCompatActivity {
         TextView playerPoints = findViewById(R.id.points);
         playerPoints.setText("Points: " + goat.getPoints());
         Grid.resetYMax();
+
+        Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                // call the update vehicles, tiles, etc.
+                handler.postDelayed(this, 500); // Call the clock again
+            }
+        };
+        handler.postDelayed(runnable, 1000);
 
         FloatingActionButton left = findViewById(R.id.left);
         FloatingActionButton right = findViewById(R.id.right);
@@ -114,3 +126,6 @@ public class GameActivity  extends AppCompatActivity {
         }
     }
 }
+
+
+

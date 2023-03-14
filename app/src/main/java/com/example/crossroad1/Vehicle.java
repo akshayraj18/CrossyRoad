@@ -1,6 +1,21 @@
 package com.example.crossroad1;
+public abstract class Vehicle {
+    private Coordinate coord;
+    private int image;
 
-public class Vehicle {
+    private final int vehicleType;
+
+    public Vehicle(Coordinate coord, int image) {
+        this.coord = coord;
+        this.image = image;
+        vehicleType = image;
+    }
+
+    public void setImage(int image) {
+        this.image = vehicleType;
+    }
+
+/*public class Vehicle {
     private String name;
     private VehicleSprite vehicleSprite;
     private int image;
@@ -28,5 +43,5 @@ public class Vehicle {
     public int getImage() {
         return image;
     }
-
+*/
 }
