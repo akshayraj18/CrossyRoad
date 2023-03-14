@@ -10,12 +10,10 @@ public class CarTile extends Tile {
         super();
         this.carCoord1 = loc;
         this.carImage = R.drawable.car;
-        super.setTileType(carImage);
     }
 
-
     @Override
-    public void setImage() {
+    public void setImage(int carImage) {
         if (hasCarSprite) {
             this.carImage = R.drawable.car;
         }
@@ -28,11 +26,13 @@ public class CarTile extends Tile {
 
     //@Override
     public void addSprite() {
+        hasCarSprite = true;
         this.carImage = R.drawable.car;
     }
 
     //@Override
     public void removeSprite() {
+        hasCarSprite = false;
         this.carImage = R.drawable.road_tile;
     }
 }

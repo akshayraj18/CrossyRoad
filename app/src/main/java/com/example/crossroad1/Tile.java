@@ -5,7 +5,7 @@ public abstract class Tile {
     private Coordinate coord;
     private int playerImage;
     private boolean hasPlayerSprite;
-    private int tileType;
+    protected int tileType;
 
     public Tile() {
         tileType = playerImage;
@@ -21,9 +21,9 @@ public abstract class Tile {
         return hasPlayerSprite ? ConfigActivity.getPlayer().getImage() : playerImage;
     }
 
-    public void setImage() {
+    public void setImage(int playerImage) {
         if (hasPlayerSprite) {
-            this.playerImage = ConfigActivity.getPlayer().getImage();
+            this.playerImage = playerImage;
         } else {
             this.playerImage = tileType;
         }
@@ -39,6 +39,7 @@ public abstract class Tile {
 
     public void removeSprite() {
         hasPlayerSprite = false;
+
     }
 
     public void setTileType(int type) {

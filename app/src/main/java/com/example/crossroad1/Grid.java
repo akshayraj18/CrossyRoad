@@ -31,21 +31,36 @@ public class Grid {
     private int jetTile2 = 47;
 
     Handler handler = new Handler();
+
+    Runnable player = new Runnable() {
+        @Override
+        public void run() {
+            tiles[playerTile].addSprite();
+            tiles[playerTile].setImage(ConfigActivity.getPlayer().getImage());
+        }
+    };
+
     Runnable carMove = new Runnable() {
         @Override
         public void run() {
             // call the update vehicles, tiles, etc.
             if (getCarCoord1().getX() > 0) {
                 tiles[carTile1].removeSprite();
+                tiles[carTile1].setImage(R.drawable.car);
                 carCoord1.moveLeft();
                 carTile1 -= 1;
+                //tiles[carTile1].addSprite();
+                //tiles[carTile1].setImage(R.drawable.car);
                 tiles[carTile1] = new CarTile(carCoord1);
                 GameActivity.adapter.notifyDataSetChanged();
             } else {
                 tiles[carTile1].removeSprite();
+                tiles[carTile1].setImage(R.drawable.car);
                 carCoord1.setX(7);
                 carCoord1.setY(10);
                 carTile1 += 7;
+                //tiles[carTile1].addSprite();
+                //tiles[carTile1].setImage();
                 tiles[carTile1] = new CarTile(carCoord1);
                 GameActivity.adapter.notifyDataSetChanged();
             }
@@ -219,10 +234,10 @@ public class Grid {
         if (getPlayerCoord().getX() > 0) {
             playerCoord.moveLeft();
             tiles[playerTile].removeSprite();
-            tiles[playerTile].setImage();
+            tiles[playerTile].setImage(ConfigActivity.getPlayer().getImage());
             playerTile -= 1;
             tiles[playerTile].addSprite();
-            tiles[playerTile].setImage();
+            tiles[playerTile].setImage(ConfigActivity.getPlayer().getImage());
         }
     }
 
@@ -230,10 +245,10 @@ public class Grid {
         if (getPlayerCoord().getX() < 7) {
             playerCoord.moveRight();
             tiles[playerTile].removeSprite();
-            tiles[playerTile].setImage();
+            tiles[playerTile].setImage(ConfigActivity.getPlayer().getImage());
             playerTile += 1;
             tiles[playerTile].addSprite();
-            tiles[playerTile].setImage();
+            tiles[playerTile].setImage(ConfigActivity.getPlayer().getImage());
         }
     }
 
@@ -241,10 +256,10 @@ public class Grid {
         if (getPlayerCoord().getY() > 1) {
             playerCoord.moveUp();
             tiles[playerTile].removeSprite();
-            tiles[playerTile].setImage();
+            tiles[playerTile].setImage(ConfigActivity.getPlayer().getImage());
             playerTile -= 8;
             tiles[playerTile].addSprite();
-            tiles[playerTile].setImage();
+            tiles[playerTile].setImage(ConfigActivity.getPlayer().getImage());
             if (Grid.getPlayerCoord().getY() < Grid.getYMax()) {
                 if (Grid.getYMax() == 11) {
                     Player.setPoints(100);
@@ -265,10 +280,10 @@ public class Grid {
         if (getPlayerCoord().getY() < 11) {
             playerCoord.moveDown();
             tiles[playerTile].removeSprite();
-            tiles[playerTile].setImage();
+            tiles[playerTile].setImage(ConfigActivity.getPlayer().getImage());
             playerTile += 8;
             tiles[playerTile].addSprite();
-            tiles[playerTile].setImage();
+            tiles[playerTile].setImage(ConfigActivity.getPlayer().getImage());
         }
 
     }

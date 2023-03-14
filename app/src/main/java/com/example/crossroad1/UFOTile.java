@@ -13,9 +13,9 @@ public class UFOTile extends Tile {
     }
 
     @Override
-    public void setImage() {
+    public void setImage(int ufoImage) {
         if (hasUfoSprite) {
-            this.ufoImage = R.drawable.ufo;
+            this.ufoImage = ufoImage;
         }
     }
 

@@ -13,9 +13,9 @@ public class JetTile extends Tile {
     }
 
     @Override
-    public void setImage() {
+    public void setImage(int jetImage) {
         if (hasJetSprite) {
-            this.jetImage = R.drawable.jet;
+            this.jetImage = jetImage;
         }
     }
 
