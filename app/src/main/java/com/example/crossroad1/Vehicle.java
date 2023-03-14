@@ -1,6 +1,9 @@
 package com.example.crossroad1;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 29da6c2e19345a9083d24d25f4f108ed106b4f52
 public abstract class Vehicle {
     private Coordinate coord;
     private int image;
@@ -44,6 +47,11 @@ public abstract class Vehicle {
 
     public int getImage() {
         return image;
+<<<<<<< HEAD
     }*/
 
+=======
+    }
+*/
+>>>>>>> 29da6c2e19345a9083d24d25f4f108ed106b4f52
 }
