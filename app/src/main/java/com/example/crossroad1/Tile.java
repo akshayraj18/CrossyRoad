@@ -3,38 +3,37 @@ package com.example.crossroad1;
 public abstract class Tile {
     // grid x and y
     private Coordinate coord;
-    private int image;
-    private boolean hasSprite;
-
+    private int playerImage;
+    private boolean hasPlayerSprite;
     private final int tileType;
 
-    public Tile(Coordinate coord, int image) {
+    public Tile(Coordinate coord, int playerImage) {
         this.coord = coord;
-        this.image = image;
-        tileType = image;
+        this.playerImage = playerImage;
+        tileType = playerImage;
     }
 
     public int getImage() {
-        return hasSprite ? ConfigActivity.getPlayer().getImage() : image;
+        return hasPlayerSprite ? ConfigActivity.getPlayer().getImage() : playerImage;
     }
 
     public void setImage() {
-        if (hasSprite) {
-            this.image = ConfigActivity.getPlayer().getImage();
+        if (hasPlayerSprite) {
+            this.playerImage = ConfigActivity.getPlayer().getImage();
         } else {
-            this.image = tileType;
+            this.playerImage = tileType;
         }
     }
 
     public boolean hasSprite() {
-        return hasSprite;
+        return hasPlayerSprite;
     }
 
     public void addSprite() {
-        hasSprite = true;
+        hasPlayerSprite = true;
     }
 
     public void removeSprite() {
-        hasSprite = false;
+        hasPlayerSprite = false;
     }
 }

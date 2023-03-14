@@ -1,11 +1,25 @@
 package com.example.crossroad1;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Handler;
+
 public class Grid {
     // player coordinates
     private static Coordinate playerCoord;
     private final Tile[] tiles;
 
-    private static int tile = 84;
+    private static int yMax = 11;
+    private int playerTile = 84;
+    private int jetTile = 63;
+    private int ufoTile = 64;
+    private int carTile = 79;
+
+
+
+
+
     public Grid() {
         tiles = new Tile[8 * 11]; // cols*rows
         // goal: 0
@@ -32,7 +46,10 @@ public class Grid {
                 }
             }
         }
-        tiles[tile].addSprite();
+        tiles[playerTile].addSprite();
+        tiles[jetTile] = new JetTile(new Coordinate(7, 8));
+        tiles[ufoTile] = new UFOTile(new Coordinate(0, 9));
+        tiles[carTile] = new CarTile(new Coordinate(7,10));
         playerCoord = new Coordinate(4, 11);
     }
 
@@ -48,8 +65,20 @@ public class Grid {
         return playerCoord;
     }
 
-    public static int getTile() {
-        return tile;
+    public static int getYMax() {
+        return yMax;
+    }
+
+    public static void updateyMax() {
+        yMax -= 1;
+    }
+
+    public static void resetYMax() {
+        yMax = 11;
+    }
+
+    public int getTile() {
+        return playerTile;
     }
 
     // player movement needed for sprint 1
@@ -59,33 +88,33 @@ public class Grid {
     public void moveLeft() {
         if (getPlayerCoord().getX() > 0) {
             playerCoord.moveLeft();
-            tiles[tile].removeSprite();
-            tiles[tile].setImage();
-            tile -= 1;
-            tiles[tile].addSprite();
-            tiles[tile].setImage();
+            tiles[playerTile].removeSprite();
+            tiles[playerTile].setImage();
+            playerTile -= 1;
+            tiles[playerTile].addSprite();
+            tiles[playerTile].setImage();
         }
     }
 
     public void moveRight() {
         if (getPlayerCoord().getX() < 7) {
             playerCoord.moveRight();
-            tiles[tile].removeSprite();
-            tiles[tile].setImage();
-            tile += 1;
-            tiles[tile].addSprite();
-            tiles[tile].setImage();
+            tiles[playerTile].removeSprite();
+            tiles[playerTile].setImage();
+            playerTile += 1;
+            tiles[playerTile].addSprite();
+            tiles[playerTile].setImage();
         }
     }
 
     public void moveUp() {
         if (getPlayerCoord().getY() > 1) {
             playerCoord.moveUp();
-            tiles[tile].removeSprite();
-            tiles[tile].setImage();
-            tile -= 8;
-            tiles[tile].addSprite();
-            tiles[tile].setImage();
+            tiles[playerTile].removeSprite();
+            tiles[playerTile].setImage();
+            playerTile -= 8;
+            tiles[playerTile].addSprite();
+            tiles[playerTile].setImage();
         }
 
     }
@@ -93,12 +122,14 @@ public class Grid {
     public void moveDown() {
         if (getPlayerCoord().getY() < 11) {
             playerCoord.moveDown();
-            tiles[tile].removeSprite();
-            tiles[tile].setImage();
-            tile += 8;
-            tiles[tile].addSprite();
-            tiles[tile].setImage();
+            tiles[playerTile].removeSprite();
+            tiles[playerTile].setImage();
+            playerTile += 8;
+            tiles[playerTile].addSprite();
+            tiles[playerTile].setImage();
         }
 
     }
+
+
 }

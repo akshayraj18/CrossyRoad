@@ -32,6 +32,20 @@ public class UnitTests {
     }
 
     @Test
+    public void upOutOfBoundsCheck() {
+        for (int i = 0; i <= 10; i++) {
+            grid.moveUp();
+        }
+        assertEquals(1, grid.getPlayerCoord().getY());
+    }
+
+    @Test
+    public void downOutOfBoundsCheck() {
+        grid.moveDown();
+        assertEquals(11, grid.getPlayerCoord().getY());
+    }
+
+    @Test
     public void leftOutOfBoundsCheck() {
         grid.moveLeft();
         grid.moveLeft();
