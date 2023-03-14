@@ -3,7 +3,6 @@ package com.example.crossroad1;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import android.os.Handler;
 
 public class SprintThreeUnitTests {
     private Grid grid = new Grid();

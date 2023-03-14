@@ -38,7 +38,7 @@ public abstract class Tile {
     public void setImage() {
         if (hasPlayerSprite) {
             this.playerImage = ConfigActivity.getPlayer().getImage();
-        } else if (hasCar){
+        } else if (hasCar) {
             this.playerImage = tileType;
         } else if (hasUFO) {
             this.playerImage = tileType;
@@ -81,7 +81,7 @@ public abstract class Tile {
         hasJet = true;
     }
 
-    public void removeJet () {
+    public void removeJet() {
         hasJet = false;
     }
 
