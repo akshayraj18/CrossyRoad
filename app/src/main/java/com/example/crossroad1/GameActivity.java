@@ -42,8 +42,8 @@ public class GameActivity  extends AppCompatActivity {
 
         Handler handler = new Handler();
         handler.postDelayed(grid.carMove, 1000);
-        /*handler.postDelayed(grid.ufoMove, 1000);
-        handler.postDelayed(grid.jetMove, 1000);*/
+        handler.postDelayed(grid.ufoMove, 1000);
+        handler.postDelayed(grid.jetMove, 1000);
 
         FloatingActionButton left = findViewById(R.id.left);
         FloatingActionButton right = findViewById(R.id.right);

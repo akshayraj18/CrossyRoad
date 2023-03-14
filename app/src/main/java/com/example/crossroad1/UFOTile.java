@@ -8,7 +8,7 @@ public class UFOTile extends Tile {
     public UFOTile(Coordinate loc) {
         super();
         this.ufoCoord = loc;
-        this.ufoImage = R.drawable.jet;
+        this.ufoImage = R.drawable.ufo;
         super.setTileType(ufoImage);
     }
 
