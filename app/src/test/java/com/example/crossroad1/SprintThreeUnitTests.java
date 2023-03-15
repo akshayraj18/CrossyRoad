@@ -93,6 +93,4 @@ public class SprintThreeUnitTests {
         grid.moveUp();
         assertEquals(300, Player.getPoints());
     }
-
-
 }
