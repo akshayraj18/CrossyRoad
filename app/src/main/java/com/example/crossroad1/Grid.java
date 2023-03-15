@@ -284,7 +284,6 @@ public class Grid {
                 Grid.updateyMax();
             }
         }
-
     }
 
     public void moveDown() {

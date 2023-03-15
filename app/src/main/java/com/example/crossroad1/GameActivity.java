@@ -24,6 +24,10 @@ public class GameActivity  extends AppCompatActivity {
         return adapter;
     }
 
+    public Grid getGrid() {
+        return grid;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
