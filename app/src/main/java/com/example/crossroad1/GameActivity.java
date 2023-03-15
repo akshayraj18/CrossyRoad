@@ -18,7 +18,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class GameActivity  extends AppCompatActivity {
     private Tile[] tiles;
     private Grid grid;
-    public static ImageAdapterGridView adapter;
+    private static ImageAdapterGridView adapter;
+
+    public static ImageAdapterGridView getAdapter() {
+        return adapter;
+    }
+
+    public Grid getGrid() {
+        return grid;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +49,9 @@ public class GameActivity  extends AppCompatActivity {
         Grid.resetYMax();
 
         Handler handler = new Handler();
-        handler.postDelayed(grid.carMove, 1000);
-        handler.postDelayed(grid.ufoMove, 1000);
-        handler.postDelayed(grid.jetMove, 1000);
+        handler.postDelayed(grid.getCarMove(), 1000);
+        handler.postDelayed(grid.getUfoMove(), 1000);
+        handler.postDelayed(grid.getJetMove(), 1000);
 
         FloatingActionButton left = findViewById(R.id.left);
         FloatingActionButton right = findViewById(R.id.right);

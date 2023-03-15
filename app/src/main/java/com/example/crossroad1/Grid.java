@@ -2,9 +2,6 @@ package com.example.crossroad1;
 
 import android.os.Handler;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 public class Grid {
     // player coordinates
@@ -30,8 +27,8 @@ public class Grid {
     private int ufoTile2 = 48;
     private int jetTile2 = 47;
 
-    Handler handler = new Handler();
-    Runnable carMove = new Runnable() {
+    private Handler handler = new Handler();
+    private Runnable carMove = new Runnable() {
         @Override
         public void run() {
             // call the update vehicles, tiles, etc.
@@ -42,7 +39,7 @@ public class Grid {
                 carTile1 -= 1;
                 tiles[carTile1].addCar();
                 tiles[carTile1].setImage();
-                GameActivity.adapter.notifyDataSetChanged();
+                GameActivity.getAdapter().notifyDataSetChanged();
             } else {
                 carCoord1.setX(7);
                 carCoord1.setY(10);
@@ -51,13 +48,17 @@ public class Grid {
                 carTile1 += 7;
                 tiles[carTile1].addCar();
                 tiles[carTile1].setImage();
-                GameActivity.adapter.notifyDataSetChanged();
+                GameActivity.getAdapter().notifyDataSetChanged();
             }
             handler.postDelayed(this, 1000); // Call the clock again
         }
     };
 
-    Runnable ufoMove = new Runnable() {
+    public Runnable getCarMove() {
+        return carMove;
+    }
+
+    private Runnable ufoMove = new Runnable() {
         @Override
         public void run() {
             // call the update vehicles, tiles, etc.
@@ -93,12 +94,16 @@ public class Grid {
                 tiles[ufoTile2].addUFO();
                 tiles[ufoTile2].setImage();
             }
-            GameActivity.adapter.notifyDataSetChanged();
+            GameActivity.getAdapter().notifyDataSetChanged();
             handler.postDelayed(this, 750); // Call the clock again
         }
     };
 
-    Runnable jetMove = new Runnable() {
+    public Runnable getUfoMove() {
+        return ufoMove;
+    }
+
+    private Runnable jetMove = new Runnable() {
         @Override
         public void run() {
             // call the update vehicles, tiles, etc.
@@ -134,13 +139,14 @@ public class Grid {
                 tiles[jetTile2].addJet();
                 tiles[jetTile2].setImage();
             }
-            GameActivity.adapter.notifyDataSetChanged();
+            GameActivity.getAdapter().notifyDataSetChanged();
             handler.postDelayed(this, 500); // Call the clock again
         }
     };
 
-
-
+    public Runnable getJetMove() {
+        return jetMove;
+    }
 
     public Grid() {
         tiles = new Tile[8 * 11]; // cols*rows
@@ -175,11 +181,11 @@ public class Grid {
         tiles[jetTile1].addJet();
         tiles[jetTile2].addJet();
         playerCoord = new Coordinate(4, 11);
-        carCoord1 = new Coordinate(7, 10);
-        ufoCoord1 = new Coordinate(0,9);
-        jetCoord1 = new Coordinate(7,8);
-        ufoCoord2 = new Coordinate(0,7);
-        jetCoord2 = new Coordinate(7,6);
+        carCoord1 = new Coordinate(7,  10);
+        ufoCoord1 = new Coordinate(0, 9);
+        jetCoord1 = new Coordinate(7, 8);
+        ufoCoord2 = new Coordinate(0, 7);
+        jetCoord2 = new Coordinate(7, 6);
 
     }
 
@@ -278,7 +284,6 @@ public class Grid {
                 Grid.updateyMax();
             }
         }
-
     }
 
     public void moveDown() {
