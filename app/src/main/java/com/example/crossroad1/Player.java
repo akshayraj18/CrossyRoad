@@ -2,7 +2,7 @@ package com.example.crossroad1;
 
 public class Player {
     private int lives;
-    private int points;
+    private static int points;
     private String name;
     private Sprite sprite;
     private Difficulty difficulty;
@@ -27,7 +27,7 @@ public class Player {
         return lives;
     }
 
-    public int getPoints() {
+    public static int getPoints() {
         return points;
     }
 
@@ -45,6 +45,10 @@ public class Player {
 
     public int getImage() {
         return image;
+    }
+
+    public static void setPoints(int x) {
+        points += x;
     }
 
 }

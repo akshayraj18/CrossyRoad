@@ -3,6 +3,8 @@ package com.example.crossroad1;
 import android.content.Context;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -16,7 +18,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class GameActivity  extends AppCompatActivity {
     private Tile[] tiles;
     private Grid grid;
-    private ImageAdapterGridView adapter;
+    private static ImageAdapterGridView adapter;
+
+    public static ImageAdapterGridView getAdapter() {
+        return adapter;
+    }
+
+    public Grid getGrid() {
+        return grid;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +46,12 @@ public class GameActivity  extends AppCompatActivity {
         playerName.setText("Player Name: " + goat.getName());
         TextView playerPoints = findViewById(R.id.points);
         playerPoints.setText("Points: " + goat.getPoints());
+        Grid.resetYMax();
+
+        Handler handler = new Handler();
+        handler.postDelayed(grid.getCarMove(), 1000);
+        handler.postDelayed(grid.getUfoMove(), 1000);
+        handler.postDelayed(grid.getJetMove(), 1000);
 
         FloatingActionButton left = findViewById(R.id.left);
         FloatingActionButton right = findViewById(R.id.right);
@@ -62,6 +78,8 @@ public class GameActivity  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 grid.moveUp();
+                TextView playerPoints = findViewById(R.id.points);
+                playerPoints.setText("Points: " + goat.getPoints());
                 adapter.notifyDataSetChanged();
             }
         });
@@ -111,3 +129,6 @@ public class GameActivity  extends AppCompatActivity {
         }
     }
 }
+
+
+
