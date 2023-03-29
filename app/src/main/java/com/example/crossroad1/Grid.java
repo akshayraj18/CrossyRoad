@@ -36,126 +36,100 @@ public class Grid {
     private int ufoTile2 = 48;
     private int jetTile2 = 47;
 
-    private Handler handler = new Handler();
-    private Runnable carMove = new Runnable() {
-        @Override
-        public void run() {
-            // call the update vehicles, tiles, etc.
-            if (getCarCoord1().getX() > 0) {
-                carCoord1.moveLeft();
-                tiles[carTile1].removeCar();
-                tiles[carTile1].setImage();
-                carTile1 -= 1;
-                tiles[carTile1].addCar();
-                tiles[carTile1].setImage();
-                GameActivity.getAdapter().notifyDataSetChanged();
-            } else {
-                carCoord1.setX(7);
-                carCoord1.setY(10);
-                tiles[carTile1].removeCar();
-                tiles[carTile1].setImage();
-                carTile1 += 7;
-                tiles[carTile1].addCar();
-                tiles[carTile1].setImage();
-                GameActivity.getAdapter().notifyDataSetChanged();
-            }
-            handler.postDelayed(this, 1000); // Call the clock again
-        }
-    };
 
-    public Runnable getCarMove() {
-        return carMove;
-    }
-
-    private Runnable ufoMove = new Runnable() {
-        @Override
-        public void run() {
-            // call the update vehicles, tiles, etc.
-            if (getUfoCoord1().getX() < 7) {
-                ufoCoord1.moveRight();
-                tiles[ufoTile1].removeUFO();
-                tiles[ufoTile1].setImage();
-                ufoTile1 += 1;
-                tiles[ufoTile1].addUFO();
-                tiles[ufoTile1].setImage();
-            } else {
-                ufoCoord1.setX(0);
-                ufoCoord1.setY(9);
-                tiles[ufoTile1].removeUFO();
-                tiles[ufoTile1].setImage();
-                ufoTile1 -= 7;
-                tiles[ufoTile1].addUFO();
-                tiles[ufoTile1].setImage();
-            }
-            if (getUfoCoord2().getX() < 7) {
-                ufoCoord2.moveRight();
-                tiles[ufoTile2].removeUFO();
-                tiles[ufoTile2].setImage();
-                ufoTile2 += 1;
-                tiles[ufoTile2].addUFO();
-                tiles[ufoTile2].setImage();
-            } else {
-                ufoCoord2.setX(0);
-                ufoCoord2.setY(7);
-                tiles[ufoTile2].removeUFO();
-                tiles[ufoTile1].setImage();
-                ufoTile2 -= 7;
-                tiles[ufoTile2].addUFO();
-                tiles[ufoTile2].setImage();
-            }
+    public void carRun() {
+        // call the update vehicles, tiles, etc.
+        if (getCarCoord1().getX() > 0) {
+            carCoord1.moveLeft();
+            tiles[carTile1].removeCar();
+            tiles[carTile1].setImage();
+            carTile1 -= 1;
+            tiles[carTile1].addCar();
+            tiles[carTile1].setImage();
             GameActivity.getAdapter().notifyDataSetChanged();
-            handler.postDelayed(this, 750); // Call the clock again
-        }
-    };
-
-    public Runnable getUfoMove() {
-        return ufoMove;
-    }
-
-    private Runnable jetMove = new Runnable() {
-        @Override
-        public void run() {
-            // call the update vehicles, tiles, etc.
-            if (getJetCoord1().getX() > 0) {
-                jetCoord1.moveLeft();
-                tiles[jetTile1].removeJet();
-                tiles[jetTile1].setImage();
-                jetTile1 -= 1;
-                tiles[jetTile1].addJet();
-                tiles[jetTile1].setImage();
-            } else {
-                jetCoord1.setX(7);
-                jetCoord1.setY(8);
-                tiles[jetTile1].removeJet();
-                tiles[jetTile1].setImage();
-                jetTile1 += 7;
-                tiles[jetTile1].addJet();
-                tiles[jetTile1].setImage();
-            }
-            if (getJetCoord2().getX() > 0) {
-                jetCoord2.moveLeft();
-                tiles[jetTile2].removeJet();
-                tiles[jetTile2].setImage();
-                jetTile2 -= 1;
-                tiles[jetTile2].addJet();
-                tiles[jetTile2].setImage();
-            } else {
-                jetCoord2.setX(7);
-                jetCoord2.setY(6);
-                tiles[jetTile2].removeJet();
-                tiles[jetTile2].setImage();
-                jetTile2 += 7;
-                tiles[jetTile2].addJet();
-                tiles[jetTile2].setImage();
-            }
+        } else {
+            carCoord1.setX(7);
+            carCoord1.setY(10);
+            tiles[carTile1].removeCar();
+            tiles[carTile1].setImage();
+            carTile1 += 7;
+            tiles[carTile1].addCar();
+            tiles[carTile1].setImage();
             GameActivity.getAdapter().notifyDataSetChanged();
-            handler.postDelayed(this, 500); // Call the clock again
         }
-    };
-
-    public Runnable getJetMove() {
-        return jetMove;
+//        handler.postDelayed(this, 1000); // Call the clock again
     }
+    public void ufoRun() {
+        if (getUfoCoord1().getX() < 7) {
+            ufoCoord1.moveRight();
+            tiles[ufoTile1].removeUFO();
+            tiles[ufoTile1].setImage();
+            ufoTile1 += 1;
+            tiles[ufoTile1].addUFO();
+            tiles[ufoTile1].setImage();
+        } else {
+            ufoCoord1.setX(0);
+            ufoCoord1.setY(9);
+            tiles[ufoTile1].removeUFO();
+            tiles[ufoTile1].setImage();
+            ufoTile1 -= 7;
+            tiles[ufoTile1].addUFO();
+            tiles[ufoTile1].setImage();
+        }
+        if (getUfoCoord2().getX() < 7) {
+            ufoCoord2.moveRight();
+            tiles[ufoTile2].removeUFO();
+            tiles[ufoTile2].setImage();
+            ufoTile2 += 1;
+            tiles[ufoTile2].addUFO();
+            tiles[ufoTile2].setImage();
+        } else {
+            ufoCoord2.setX(0);
+            ufoCoord2.setY(7);
+            tiles[ufoTile2].removeUFO();
+            tiles[ufoTile1].setImage();
+            ufoTile2 -= 7;
+            tiles[ufoTile2].addUFO();
+            tiles[ufoTile2].setImage();
+        }
+        GameActivity.getAdapter().notifyDataSetChanged();
+    }
+    public void jetRun() {
+        if (getJetCoord1().getX() > 0) {
+            jetCoord1.moveLeft();
+            tiles[jetTile1].removeJet();
+            tiles[jetTile1].setImage();
+            jetTile1 -= 1;
+            tiles[jetTile1].addJet();
+            tiles[jetTile1].setImage();
+        } else {
+            jetCoord1.setX(7);
+            jetCoord1.setY(8);
+            tiles[jetTile1].removeJet();
+            tiles[jetTile1].setImage();
+            jetTile1 += 7;
+            tiles[jetTile1].addJet();
+            tiles[jetTile1].setImage();
+        }
+        if (getJetCoord2().getX() > 0) {
+            jetCoord2.moveLeft();
+            tiles[jetTile2].removeJet();
+            tiles[jetTile2].setImage();
+            jetTile2 -= 1;
+            tiles[jetTile2].addJet();
+            tiles[jetTile2].setImage();
+        } else {
+            jetCoord2.setX(7);
+            jetCoord2.setY(6);
+            tiles[jetTile2].removeJet();
+            tiles[jetTile2].setImage();
+            jetTile2 += 7;
+            tiles[jetTile2].addJet();
+            tiles[jetTile2].setImage();
+        }
+        GameActivity.getAdapter().notifyDataSetChanged();
+    }
+
 
     public Grid() {
         tiles = new Tile[8 * 11]; // cols*rows

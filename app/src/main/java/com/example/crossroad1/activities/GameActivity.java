@@ -23,29 +23,78 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class GameActivity  extends AppCompatActivity {
     private Tile[] tiles;
-    private Grid grid;
+    private Grid grid = new Grid();
     private static ImageAdapterGridView adapter;
 
     public static ImageAdapterGridView getAdapter() {
         return adapter;
     }
+    Player goat = ConfigActivity.getPlayer();
 
-    public Grid getGrid() {
-        return grid;
-    }
+
+    Handler handler1 = new Handler();
+    private Runnable carMove = new Runnable() {
+        @Override
+        public void run() {
+            grid.carRun();
+            if ((grid.hasCollision() || grid.inWater()) && grid.getPlayerCoord().getY() != 11) {
+                grid = new Grid();
+                if (goat.getLives() == 1) {
+                    startActivity(new Intent(GameActivity.this, EndActivity.class));
+                } else {
+                    goat.decLives();
+                    Player.setPoints(0);
+                    startActivity(new Intent(GameActivity.this, GameActivity.class));
+                }
+            }
+            handler1.postDelayed(this, 1000); // Call the clock again
+        }
+    };
+    private Runnable ufoMove = new Runnable() {
+        @Override
+        public void run() {
+            grid.ufoRun();
+            if ((grid.hasCollision() || grid.inWater()) && grid.getPlayerCoord().getY() != 11) {
+                grid = new Grid();
+                if (goat.getLives() == 1) {
+                    startActivity(new Intent(GameActivity.this, EndActivity.class));
+                } else {
+                    goat.decLives();
+                    Player.setPoints(0);
+                    startActivity(new Intent(GameActivity.this, GameActivity.class));
+                }
+            }
+            handler1.postDelayed(this, 750); // Call the clock again
+        }
+    };
+    private Runnable jetMove = new Runnable() {
+        @Override
+        public void run() {
+            grid.jetRun();
+            if ((grid.hasCollision() || grid.inWater()) && grid.getPlayerCoord().getY() != 11) {
+                grid = new Grid();
+                if (goat.getLives() == 1) {
+                    startActivity(new Intent(GameActivity.this, EndActivity.class));
+                } else {
+                    goat.decLives();
+                    Player.setPoints(0);
+                    startActivity(new Intent(GameActivity.this, GameActivity.class));
+                }
+            }
+            handler1.postDelayed(this, 500); // Call the clock again
+        }
+    };
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_screen);
-        grid = new Grid();
         Grid.resetYMax();
         tiles = grid.getTiles();
         GridView androidGridView = findViewById(R.id.gridview);
         adapter = new ImageAdapterGridView(this);
         androidGridView.setAdapter(adapter);
-        Player goat = ConfigActivity.getPlayer();
         TextView remainingLives = findViewById(R.id.displayLives);
         remainingLives.setText("Remaining Lives: " + goat.getLives());
         TextView difficultyLevel = findViewById(R.id.difficultyLevel);
@@ -54,12 +103,12 @@ public class GameActivity  extends AppCompatActivity {
         playerName.setText("Player Name: " + goat.getName());
         TextView playerPoints = findViewById(R.id.points);
         playerPoints.setText("Points: " + goat.getPoints());
-        Grid.resetYMax();
+//        Grid.resetYMax();
 
         Handler handler = new Handler();
-        handler.postDelayed(grid.getCarMove(), 1000);
-        handler.postDelayed(grid.getUfoMove(), 1000);
-        handler.postDelayed(grid.getJetMove(), 1000);
+        handler.postDelayed(carMove, 1000);
+        handler.postDelayed(ufoMove, 1000);
+        handler.postDelayed(jetMove, 1000);
 
         FloatingActionButton left = findViewById(R.id.left);
         FloatingActionButton right = findViewById(R.id.right);
@@ -141,7 +190,6 @@ public class GameActivity  extends AppCompatActivity {
         });
     }
 
-
     public class ImageAdapterGridView extends BaseAdapter {
         private final Context mContext;
 
@@ -162,17 +210,6 @@ public class GameActivity  extends AppCompatActivity {
         }
 
         public View getView(int position, View convertView, ViewGroup parent) {
-//            Player goat = ConfigActivity.getPlayer();
-//            if (grid.hasCollision() || grid.inWater()) {
-//                if (goat.getLives() == 1) {
-//                    startActivity(new Intent(GameActivity.this, EndActivity.class));
-//                } else {
-//                    goat.decLives();
-//                    Player.setPoints(0);
-//                    startActivity(new Intent(GameActivity.this, GameActivity.class));
-//                }
-//            }
-
             ImageView mImageView;
 
             if (convertView == null) {
