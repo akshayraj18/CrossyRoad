@@ -1,6 +1,8 @@
-package com.example.crossroad1;
+package com.example.crossroad1.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +14,10 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.ImageView;
 
+import com.example.crossroad1.Grid;
+import com.example.crossroad1.Player;
+import com.example.crossroad1.R;
+import com.example.crossroad1.Tile;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
@@ -28,11 +34,13 @@ public class GameActivity  extends AppCompatActivity {
         return grid;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_screen);
         grid = new Grid();
+        Grid.resetYMax();
         tiles = grid.getTiles();
         GridView androidGridView = findViewById(R.id.gridview);
         adapter = new ImageAdapterGridView(this);
@@ -62,6 +70,16 @@ public class GameActivity  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 grid.moveLeft();
+                if (grid.hasCollision() || grid.inWater()) {
+                    if (goat.getLives() == 1) {
+                        startActivity(new Intent(GameActivity.this, EndActivity.class));
+                    } else {
+                        goat.decLives();
+                        Player.setPoints(0);
+                        startActivity(new Intent(GameActivity.this, GameActivity.class));
+                    }
+                    return;
+                }
                 adapter.notifyDataSetChanged();
             }
         });
@@ -70,6 +88,16 @@ public class GameActivity  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 grid.moveRight();
+                if (grid.hasCollision() || grid.inWater()) {
+                    if (goat.getLives() == 1) {
+                        startActivity(new Intent(GameActivity.this, EndActivity.class));
+                    } else {
+                        goat.decLives();
+                        Player.setPoints(0);
+                        startActivity(new Intent(GameActivity.this, GameActivity.class));
+                    }
+                    return;
+                }
                 adapter.notifyDataSetChanged();
             }
         });
@@ -78,6 +106,16 @@ public class GameActivity  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 grid.moveUp();
+                if (grid.hasCollision() || grid.inWater()) {
+                    if (goat.getLives() == 1) {
+                        startActivity(new Intent(GameActivity.this, EndActivity.class));
+                    } else {
+                        goat.decLives();
+                        Player.setPoints(0);
+                        startActivity(new Intent(GameActivity.this, GameActivity.class));
+                    }
+                    return;
+                }
                 TextView playerPoints = findViewById(R.id.points);
                 playerPoints.setText("Points: " + goat.getPoints());
                 adapter.notifyDataSetChanged();
@@ -88,6 +126,16 @@ public class GameActivity  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 grid.moveDown();
+                if (grid.hasCollision() || grid.inWater()) {
+                    if (goat.getLives() == 1) {
+                        startActivity(new Intent(GameActivity.this, EndActivity.class));
+                    } else {
+                        goat.decLives();
+                        Player.setPoints(0);
+                        startActivity(new Intent(GameActivity.this, GameActivity.class));
+                    }
+                    return;
+                }
                 adapter.notifyDataSetChanged();
             }
         });
@@ -114,6 +162,17 @@ public class GameActivity  extends AppCompatActivity {
         }
 
         public View getView(int position, View convertView, ViewGroup parent) {
+//            Player goat = ConfigActivity.getPlayer();
+//            if (grid.hasCollision() || grid.inWater()) {
+//                if (goat.getLives() == 1) {
+//                    startActivity(new Intent(GameActivity.this, EndActivity.class));
+//                } else {
+//                    goat.decLives();
+//                    Player.setPoints(0);
+//                    startActivity(new Intent(GameActivity.this, GameActivity.class));
+//                }
+//            }
+
             ImageView mImageView;
 
             if (convertView == null) {

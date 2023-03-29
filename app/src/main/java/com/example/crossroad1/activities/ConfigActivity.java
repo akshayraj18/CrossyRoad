@@ -1,4 +1,4 @@
-package com.example.crossroad1;
+package com.example.crossroad1.activities;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
@@ -9,6 +9,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import com.example.crossroad1.enums.Difficulty;
+import com.example.crossroad1.Player;
+import com.example.crossroad1.R;
+import com.example.crossroad1.enums.Sprite;
 
 public class ConfigActivity extends AppCompatActivity {
     private ImageView imageView;

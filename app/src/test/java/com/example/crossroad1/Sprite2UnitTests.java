@@ -3,6 +3,9 @@ package com.example.crossroad1;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import com.example.crossroad1.enums.Difficulty;
+import com.example.crossroad1.enums.Sprite;
+
 public class Sprite2UnitTests {
     private Grid grid = new Grid();
 

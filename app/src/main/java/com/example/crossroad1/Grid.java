@@ -1,20 +1,29 @@
 package com.example.crossroad1;
 
+import android.content.Intent;
 import android.os.Handler;
+
+import com.example.crossroad1.activities.ConfigActivity;
+import com.example.crossroad1.activities.EndActivity;
+import com.example.crossroad1.activities.GameActivity;
+import com.example.crossroad1.tiles.CloudTile;
+import com.example.crossroad1.tiles.IslandTile;
+import com.example.crossroad1.tiles.SkyTile;
+import com.example.crossroad1.tiles.StreamTile;
 
 
 public class Grid {
     // player coordinates
-    private static Coordinate playerCoord;
-    private static Coordinate carCoord1;
+    private Coordinate playerCoord;
+    private Coordinate carCoord1;
 
-    private static Coordinate ufoCoord1;
+    private Coordinate ufoCoord1;
 
-    private static Coordinate jetCoord1;
+    private Coordinate jetCoord1;
 
-    private static Coordinate ufoCoord2;
+    private Coordinate ufoCoord2;
 
-    private static Coordinate jetCoord2;
+    private Coordinate jetCoord2;
 
 
     private final Tile[] tiles;
@@ -197,27 +206,27 @@ public class Grid {
         return tiles[x + (y - 1) * 8];
     }
 
-    public static Coordinate getPlayerCoord() {
+    public Coordinate getPlayerCoord() {
         return playerCoord;
     }
 
-    public static Coordinate getCarCoord1() {
+    public Coordinate getCarCoord1() {
         return carCoord1;
     }
 
-    public static Coordinate getUfoCoord1() {
+    public Coordinate getUfoCoord1() {
         return ufoCoord1;
     }
 
-    public static Coordinate getUfoCoord2() {
+    public Coordinate getUfoCoord2() {
         return ufoCoord2;
     }
 
-    public static Coordinate getJetCoord1() {
+    public Coordinate getJetCoord1() {
         return jetCoord1;
     }
 
-    public static Coordinate getJetCoord2() {
+    public Coordinate getJetCoord2() {
         return jetCoord2;
     }
 
@@ -271,7 +280,7 @@ public class Grid {
             playerTile -= 8;
             tiles[playerTile].addSprite();
             tiles[playerTile].setImage();
-            if (Grid.getPlayerCoord().getY() < Grid.getYMax()) {
+            if (this.getPlayerCoord().getY() < Grid.getYMax()) {
                 if (Grid.getYMax() == 11) {
                     Player.setPoints(100);
                 } else if (Grid.getYMax() == 10 || Grid.getYMax() == 8) {
@@ -295,8 +304,13 @@ public class Grid {
             tiles[playerTile].addSprite();
             tiles[playerTile].setImage();
         }
-
     }
 
+    public boolean hasCollision() {
+        return tiles[playerTile].hasVehicle();
+    }
 
+    public boolean inWater() {
+        return (tiles[playerTile] instanceof StreamTile);
+    }
 }

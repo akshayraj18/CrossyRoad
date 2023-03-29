@@ -1,4 +1,4 @@
-package com.example.crossroad1;
+package com.example.crossroad1.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.crossroad1.R;
 
 public class WelcomeActivity extends AppCompatActivity {
     private Button play;
