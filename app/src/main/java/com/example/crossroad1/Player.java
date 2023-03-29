@@ -53,6 +53,9 @@ public class Player {
     public static void setPoints(int x) {
         points = x;
     }
+    public static void incPoints(int x) {
+        points += x;
+    }
 
     public void decLives() {
         lives -= 1;
