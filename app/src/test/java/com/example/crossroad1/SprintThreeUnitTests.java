@@ -41,34 +41,34 @@ public class SprintThreeUnitTests {
 
     @Test
     public void checkCarRow() {
-        assertEquals(10, Grid.getCarCoord1().getY());
+        assertEquals(10, grid.getCarCoord1().getY());
     }
 
     @Test
     public void checkUFORow() {
-        assertEquals(9, Grid.getUfoCoord1().getY());
-        assertEquals(7, Grid.getUfoCoord2().getY());
+        assertEquals(9, grid.getUfoCoord1().getY());
+        assertEquals(7, grid.getUfoCoord2().getY());
     }
 
     @Test
     public void checkJetRow() {
-        assertEquals(8, Grid.getJetCoord1().getY());
-        assertEquals(6, Grid.getJetCoord2().getY());
+        assertEquals(8, grid.getJetCoord1().getY());
+        assertEquals(6, grid.getJetCoord2().getY());
     }
 
     @Test
     public void checkJet1Spawn() {
-        assertEquals(7, Grid.getJetCoord1().getX());
+        assertEquals(7, grid.getJetCoord1().getX());
     }
 
     @Test
     public void checkJet2Spawn() {
-        assertEquals(7, Grid.getJetCoord2().getX());
+        assertEquals(7, grid.getJetCoord2().getX());
     }
     @Test
     public void checkUFOSpawn() {
-        assertEquals(0, Grid.getUfoCoord1().getX());
-        assertEquals(0,  Grid.getUfoCoord2().getX());
+        assertEquals(0, grid.getUfoCoord1().getX());
+        assertEquals(0,  grid.getUfoCoord2().getX());
     }
 
     @Test
@@ -81,7 +81,7 @@ public class SprintThreeUnitTests {
 
     @Test
     public void checkCarSpawn() {
-        assertEquals(7, Grid.getCarCoord1().getX());
+        assertEquals(7, grid.getCarCoord1().getX());
 
     }
 

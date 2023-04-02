@@ -26,7 +26,7 @@ public class Player {
         }
     }
 
-    public int getLives() {
+    public static int getLives() {
         return lives;
     }
 
@@ -55,6 +55,10 @@ public class Player {
     }
     public static void incPoints(int x) {
         points += x;
+    }
+
+    public static void setLives(int x) {
+        lives = x;
     }
 
     public void decLives() {

@@ -2,96 +2,185 @@ package com.example.crossroad1;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import com.example.crossroad1.enums.Difficulty;
+import com.example.crossroad1.enums.Sprite;
 
 
 public class SprintFourUnitTests {
     private Grid grid = new Grid();
+    private Player goat = new Player("Harsha", Sprite.MJ, Difficulty.EASY);
+    private Runnable carMove = new Runnable() {
+        @Override
+        public void run() {
+            if ((grid.hasCollision() || grid.inWater()) && grid.getPlayerCoord().getY() != 11) {
+                grid = new Grid();
+                    goat.decLives();
+                    Player.setPoints(0);
+            }
+        }
+    };
+    private Runnable ufoMove = new Runnable() {
+        @Override
+        public void run() {
+            if ((grid.hasCollision() || grid.inWater()) && grid.getPlayerCoord().getY() != 11) {
+                grid = new Grid();
+
+                    goat.decLives();
+                    Player.setPoints(0);
+            }
+        }
+    };
+    private Runnable jetMove = new Runnable() {
+        @Override
+        public void run() {
+            if ((grid.hasCollision() || grid.inWater()) && grid.getPlayerCoord().getY() != 11) {
+                grid = new Grid();
+                    goat.decLives();
+                    Player.setPoints(0);
+
+            }
+        }
+    };
+
+
 
     @Test
-    public void checkWaterLossLife() {
+    public void checkWaterCollision() {
         grid.moveUp();
         grid.moveUp();
-        grid.moveDown();
-        grid.moveRight();
         grid.moveUp();
         grid.moveUp();
-        grid.moveLeft();
-        assertEquals(600, Player.getPoints());
+        grid.moveUp();
+        grid.moveUp();
+        grid.moveUp();
+        assertEquals(true, grid.inWater());
     }
 
     @Test
-    public void checkScoreReset() {
+    public void checkCarCollision() {
+        grid.moveUp();
+        grid.moveRight();
+        grid.moveRight();
+        grid.moveRight();
+        assertEquals(true, grid.hasCollision());
+    }
+
+    @Test
+    public void checkUFOCollision() {
+        grid.moveUp();
+        grid.moveUp();
+        grid.moveLeft();
+        grid.moveLeft();
+        grid.moveLeft();
+        grid.moveLeft();
+        assertEquals(true, grid.hasCollision());
+    }
+
+    @Test
+    public void checkJetCollision() {
         grid.moveUp();
         grid.moveUp();
         grid.moveUp();
+        grid.moveRight();
+        grid.moveRight();
+        grid.moveRight();
+        assertEquals(true, grid.hasCollision());
+    }
+
+    @Test
+    public void checkCarResetPoints() {
         grid.moveUp();
-        grid.moveUp();
-        grid.moveUp();
-        grid.moveUp();
+        grid.moveRight();
+        grid.moveRight();
+        grid.moveRight();
+        carMove.run();
         assertEquals(0, Player.getPoints());
     }
 
     @Test
-    public void noScoreIncrease() {
+    public void checkJetResetPoints() {
         grid.moveUp();
-        grid.moveDown();
+        grid.moveUp();
         grid.moveUp();
         grid.moveRight();
-        assertEquals(300, Player.getPoints());
+        grid.moveRight();
+        grid.moveRight();
+        jetMove.run();
+        assertEquals(0, Player.getPoints());
     }
 
     @Test
-    public void checkCarRow() {
-        assertEquals(10, Grid.getCarCoord1().getY());
-    }
-
-    @Test
-    public void checkUFORow() {
-        assertEquals(9, Grid.getUfoCoord1().getY());
-        assertEquals(7, Grid.getUfoCoord2().getY());
-    }
-
-    @Test
-    public void checkJetRow() {
-        assertEquals(8, Grid.getJetCoord1().getY());
-        assertEquals(6, Grid.getJetCoord2().getY());
-    }
-
-    @Test
-    public void checkJet1Spawn() {
-        assertEquals(7, Grid.getJetCoord1().getX());
-    }
-
-    @Test
-    public void checkJet2Spawn() {
-        assertEquals(7, Grid.getJetCoord2().getX());
-    }
-    @Test
-    public void checkUFOSpawn() {
-        assertEquals(0, Grid.getUfoCoord1().getX());
-        assertEquals(0,  Grid.getUfoCoord2().getX());
-    }
-
-    @Test
-    public void handlesBoundaryScoreIncrease() {
-        grid.moveDown();
+    public void checkUFOResetPoints() {
         grid.moveUp();
         grid.moveUp();
-        assertEquals(300, Player.getPoints());
+        grid.moveLeft();
+        grid.moveLeft();
+        grid.moveLeft();
+        grid.moveLeft();
+        ufoMove.run();
+        assertEquals(0, Player.getPoints());
     }
 
     @Test
-    public void checkCarSpawn() {
-        assertEquals(7, Grid.getCarCoord1().getX());
-
+    public void checkUFODecreaselife() {
+        Player.setLives(1);
+        grid.moveUp();
+        grid.moveUp();
+        grid.moveLeft();
+        grid.moveLeft();
+        grid.moveLeft();
+        grid.moveLeft();
+        ufoMove.run();
+        assertEquals(0, Player.getLives());
     }
 
     @Test
-    public void noScoreIncrease2() {
+    public void checkJetDecreaseLife() {
+        Player.setLives(1);
         grid.moveUp();
         grid.moveUp();
-        grid.moveDown();
         grid.moveUp();
-        assertEquals(300, Player.getPoints());
+        grid.moveRight();
+        grid.moveRight();
+        grid.moveRight();
+        jetMove.run();
+        assertEquals(0, Player.getLives());
+    }
+
+    @Test
+    public void checkCarDecreaseLife() {
+        Player.setLives(1);
+        grid.moveUp();
+        grid.moveRight();
+        grid.moveRight();
+        grid.moveRight();
+        carMove.run();
+        assertEquals(0, Player.getLives());
+    }
+
+    @Test
+    public void checkCarCollisionRespawn() {
+        grid.moveUp();
+        grid.moveRight();
+        grid.moveRight();
+        grid.moveRight();
+        carMove.run();
+        assertEquals(7, grid.getCarCoord1().getX());
+        assertEquals(10, grid.getCarCoord1().getY());
+
+    }
+
+
+    @Test
+    public void checkUFOCollisionRespawn() {
+        grid.moveUp();
+        grid.moveUp();
+        grid.moveLeft();
+        grid.moveLeft();
+        grid.moveLeft();
+        grid.moveLeft();
+        ufoMove.run();
+        assertEquals(7, grid.getCarCoord1().getX());
+        assertEquals(10, grid.getCarCoord1().getY());
     }
 }
