@@ -1,16 +1,16 @@
 package com.example.crossroad1;
 
+import com.example.crossroad1.activities.ConfigActivity;
+
 public abstract class Tile {
     // grid x and y
     private Coordinate coord;
     private int playerImage;
     private boolean hasPlayerSprite;
     private int tileType;
-
     private boolean hasCar;
     private boolean hasJet;
     private boolean hasUFO;
-
     public Tile() {
         tileType = playerImage;
     }
@@ -38,13 +38,7 @@ public abstract class Tile {
     public void setImage() {
         if (hasPlayerSprite) {
             this.playerImage = ConfigActivity.getPlayer().getImage();
-        } else if (hasCar) {
-            this.playerImage = tileType;
-        } else if (hasUFO) {
-            this.playerImage = tileType;
-        } else if (hasJet) {
-            this.playerImage = tileType;
-        } else {
+        }  else {
             this.playerImage = tileType;
         }
     }
@@ -87,6 +81,10 @@ public abstract class Tile {
 
     public void setTileType(int type) {
         tileType = type;
+    }
+
+    public boolean hasVehicle() {
+        return hasCar || hasJet || hasUFO;
     }
 
 }

@@ -10,6 +10,11 @@ import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
 
+import com.example.crossroad1.activities.ConfigActivity;
+import com.example.crossroad1.activities.GameActivity;
+
+import junit.framework.TestCase;
+
 /**
  * Instrumented test, which will execute on an Android device.
  *
@@ -23,4 +28,5 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         assertEquals("com.example.crossroad1", appContext.getPackageName());
     }
+
 }

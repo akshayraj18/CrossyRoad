@@ -1,12 +1,15 @@
 package com.example.crossroad1;
 
+import com.example.crossroad1.enums.Difficulty;
+import com.example.crossroad1.enums.Sprite;
+
 public class Player {
-    private int lives;
+    private static int lives;
     private static int points;
-    private String name;
-    private Sprite sprite;
-    private Difficulty difficulty;
-    private int image;
+    private static String name;
+    private static Sprite sprite;
+    private static Difficulty difficulty;
+    private static int image;
 
     public Player(String name, Sprite sprite, Difficulty difficulty) {
         this.name = name;
@@ -47,12 +50,15 @@ public class Player {
         return image;
     }
 
-    public static void addPoints(int x) {
+    public static void setPoints(int x) {
+        points = x;
+    }
+    public static void incPoints(int x) {
         points += x;
     }
 
-    public static void setPoints(int x) {
-        points = x;
+    public void decLives() {
+        lives -= 1;
     }
 
 }
