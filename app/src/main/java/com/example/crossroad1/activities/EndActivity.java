@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.crossroad1.Player;
 import com.example.crossroad1.R;
 
 public class EndActivity extends AppCompatActivity {
