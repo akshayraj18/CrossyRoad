@@ -1,5 +1,7 @@
 package com.example.crossroad1;
 
+import com.example.crossroad1.activities.ConfigActivity;
+
 public abstract class Tile {
     // grid x and y
     private Coordinate coord;
@@ -87,6 +89,10 @@ public abstract class Tile {
 
     public void setTileType(int type) {
         tileType = type;
+    }
+
+    public boolean hasVehicle() {
+        return hasCar || hasJet || hasUFO;
     }
 
 }
