@@ -351,7 +351,7 @@ public class Grid {
                     Player.incPoints(200);
                 } else if (Grid.getYMax() == 9 || Grid.getYMax() == 7) {
                     Player.incPoints(300);
-                } else if (Grid.getYMax() == 0){
+                } else if (playerTile < 8){
                     Player.incPoints(5000);
                 } else {
                     Player.incPoints(50);
