@@ -63,6 +63,10 @@ public class GameActivity  extends AppCompatActivity {
                     Player.setPoints(0);
                     startActivity(new Intent(GameActivity.this, GameActivity.class));
                 }
+                if (grid.reachedGoal()) {
+                    startActivity(new Intent(GameActivity.this, WinActivity.class));
+                    return;
+                }
             }
             handler1.postDelayed(this, 750); // Call the clock again
         }
@@ -81,7 +85,26 @@ public class GameActivity  extends AppCompatActivity {
                     startActivity(new Intent(GameActivity.this, GameActivity.class));
                 }
             }
+            if (grid.reachedGoal()) {
+                startActivity(new Intent(GameActivity.this, WinActivity.class));
+                return;
+            }
             handler1.postDelayed(this, 500); // Call the clock again
+        }
+    };
+    private Runnable log1Move = new Runnable() {
+        @Override
+        public void run() {// process log moving player off screen soon
+            grid.log1Run();
+            handler1.postDelayed(this, 500); // Call the clock again
+        }
+    };
+    private Runnable log23Move = new Runnable() {
+        @Override
+        public void run() {// process log moving player off screen soon
+            grid.log2Run();
+            grid.log3Run();
+            handler1.postDelayed(this, 750); // Call the clock again
         }
     };
 
@@ -109,6 +132,8 @@ public class GameActivity  extends AppCompatActivity {
         handler.postDelayed(carMove, 1000);
         handler.postDelayed(ufoMove, 1000);
         handler.postDelayed(jetMove, 1000);
+        handler.postDelayed(log1Move, 1000);
+        handler.postDelayed(log23Move, 1000);
 
         FloatingActionButton left = findViewById(R.id.left);
         FloatingActionButton right = findViewById(R.id.right);
@@ -145,16 +170,6 @@ public class GameActivity  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 grid.moveDown();
-                if (grid.hasCollision() || grid.inWater()) {
-                    if (goat.getLives() == 1) {
-                        startActivity(new Intent(GameActivity.this, EndActivity.class));
-                    } else {
-                        goat.decLives();
-                        Player.setPoints(0);
-                        startActivity(new Intent(GameActivity.this, GameActivity.class));
-                    }
-                    return;
-                }
                 adapter.notifyDataSetChanged();
             }
         });

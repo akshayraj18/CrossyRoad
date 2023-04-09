@@ -32,6 +32,10 @@
             android:name=".activities.EndActivity"
             >
         </activity>
+        <activity
+            android:name=".activities.WinActivity"
+            >
+        </activity>
     </application>
 
 </manifest>
