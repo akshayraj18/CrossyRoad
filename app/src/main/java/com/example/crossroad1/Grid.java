@@ -1,10 +1,6 @@
 package com.example.crossroad1;
 
-import android.content.Intent;
-import android.os.Handler;
 
-import com.example.crossroad1.activities.ConfigActivity;
-import com.example.crossroad1.activities.EndActivity;
 import com.example.crossroad1.activities.GameActivity;
 import com.example.crossroad1.tiles.CloudTile;
 import com.example.crossroad1.tiles.IslandTile;
@@ -15,15 +11,15 @@ import com.example.crossroad1.tiles.StreamTile;
 public class Grid {
     // player coordinates
     private Coordinate playerCoord;
-    private Coordinate carCoord1;
+    private  Coordinate carCoord1;
 
-    private Coordinate ufoCoord1;
+    private  Coordinate ufoCoord1;
 
     private Coordinate jetCoord1;
 
-    private Coordinate ufoCoord2;
+    private  Coordinate ufoCoord2;
 
-    private Coordinate jetCoord2;
+    private  Coordinate jetCoord2;
 
 
     private final Tile[] tiles;
@@ -57,7 +53,7 @@ public class Grid {
             tiles[carTile1].setImage();
             GameActivity.getAdapter().notifyDataSetChanged();
         }
-//        handler.postDelayed(this, 1000); // Call the clock again
+
     }
     public void ufoRun() {
         if (getUfoCoord1().getX() < 7) {

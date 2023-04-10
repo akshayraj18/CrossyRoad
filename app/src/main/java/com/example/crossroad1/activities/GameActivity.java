@@ -41,7 +41,7 @@ public class GameActivity  extends AppCompatActivity {
                 grid = new Grid();
                 if (goat.getLives() == 1) {
                     startActivity(new Intent(GameActivity.this, EndActivity.class));
-                } else {
+                 } else {
                     goat.decLives();
                     Player.setPoints(0);
                     startActivity(new Intent(GameActivity.this, GameActivity.class));
