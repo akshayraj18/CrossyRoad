@@ -57,9 +57,7 @@ public abstract class Tile {
         }
     }
 
-    public boolean hasSprite() {
-        return hasPlayerSprite;
-    }
+
 
     public void addSprite() {
         hasPlayerSprite = true;

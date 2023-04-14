@@ -113,7 +113,7 @@ public class GameActivity  extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_screen);
-        Grid.resetYMax();
+        grid.resetYMax();
         tiles = grid.getTiles();
         GridView androidGridView = findViewById(R.id.gridview);
         adapter = new ImageAdapterGridView(this);

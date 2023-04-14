@@ -97,38 +97,54 @@ public class Grid {
         }
         GameActivity.getAdapter().notifyDataSetChanged();
     }
+
+    public void jetLeftUpdate1() {
+        jetCoord1.moveLeft();
+        tiles[jetTile1].removeJet();
+        tiles[jetTile1].setImage();
+        jetTile1 -= 1;
+        tiles[jetTile1].addJet();
+        tiles[jetTile1].setImage();
+    }
+
+    public void jetLeftReset1() {
+        jetCoord1.setX(7);
+        jetCoord1.setY(8);
+        tiles[jetTile1].removeJet();
+        tiles[jetTile1].setImage();
+        jetTile1 += 7;
+        tiles[jetTile1].addJet();
+        tiles[jetTile1].setImage();
+    }
+
+    public void jetLeftReset2() {
+        jetCoord2.setX(7);
+        jetCoord2.setY(6);
+        tiles[jetTile2].removeJet();
+        tiles[jetTile2].setImage();
+        jetTile2 += 7;
+        tiles[jetTile2].addJet();
+        tiles[jetTile2].setImage();
+    }
+
+    public void jetLeftUpdate2() {
+        jetCoord2.moveLeft();
+        tiles[jetTile2].removeJet();
+        tiles[jetTile2].setImage();
+        jetTile2 -= 1;
+        tiles[jetTile2].addJet();
+        tiles[jetTile2].setImage();
+    }
     public void jetRun() {
         if (getJetCoord1().getX() > 0) {
-            jetCoord1.moveLeft();
-            tiles[jetTile1].removeJet();
-            tiles[jetTile1].setImage();
-            jetTile1 -= 1;
-            tiles[jetTile1].addJet();
-            tiles[jetTile1].setImage();
+            jetLeftUpdate1();
         } else {
-            jetCoord1.setX(7);
-            jetCoord1.setY(8);
-            tiles[jetTile1].removeJet();
-            tiles[jetTile1].setImage();
-            jetTile1 += 7;
-            tiles[jetTile1].addJet();
-            tiles[jetTile1].setImage();
+            jetLeftReset1();
         }
         if (getJetCoord2().getX() > 0) {
-            jetCoord2.moveLeft();
-            tiles[jetTile2].removeJet();
-            tiles[jetTile2].setImage();
-            jetTile2 -= 1;
-            tiles[jetTile2].addJet();
-            tiles[jetTile2].setImage();
+            jetLeftUpdate2();
         } else {
-            jetCoord2.setX(7);
-            jetCoord2.setY(6);
-            tiles[jetTile2].removeJet();
-            tiles[jetTile2].setImage();
-            jetTile2 += 7;
-            tiles[jetTile2].addJet();
-            tiles[jetTile2].setImage();
+            jetLeftReset2();
         }
         GameActivity.getAdapter().notifyDataSetChanged();
     }
@@ -159,57 +175,54 @@ public class Grid {
             GameActivity.getAdapter().notifyDataSetChanged();
         }
     }
-    public void log2Run() {
-        if (getLogCoord2().getX() < 7) {
-            if (log2 == playerTile) {
-                if (getPlayerCoord().getX() < 7) {
-                    playerCoord.moveRight();
-                    tiles[playerTile].removeSprite();
-                    tiles[playerTile].setImage();
-                    playerTile += 1;
-                    tiles[playerTile].addSprite();
-                    tiles[playerTile].setImage();
-                }
+
+
+    public void logRun(int logNumber) {
+        if ((logNumber == 2 && getLogCoord2().getX() < 7) || (logNumber == 3 && log3 < 15)) {
+            if ((log2 == playerTile || log3 == playerTile) && getPlayerCoord().getX() < 7) {
+                playerCoord.moveRight();
+                tiles[playerTile].removeSprite();
+                tiles[playerTile].setImage();
+                playerTile += 1;
+                tiles[playerTile].addSprite();
+                tiles[playerTile].setImage();
             }
-            logCoord2.moveRight();
-            tiles[log2].removeLog();
-            tiles[log2].setImage();
-            log2 += 1;
+            if (logNumber == 2) {
+                logCoord2.moveRight();
+                tiles[log2].removeLog();
+                tiles[log2].setImage();
+                log2 += 1;
+            } else {
+                tiles[log3].removeLog();
+                tiles[log3].setImage();
+                log3 += 1;
+            }
+        } else {
+            if (logNumber == 2) {
+                logCoord2.setX(0);
+                tiles[log2].removeLog();
+                tiles[log2].setImage();
+                log2 -= 7;
+            } else {
+                tiles[log3].removeLog();
+                tiles[log3].setImage();
+                log3 -= 7;
+            }
+        }
+        if (logNumber == 2) {
             tiles[log2].addLog();
             tiles[log2].setImage();
-        } else { // not updating player automatically kills them
-            logCoord2.setX(0);
-            tiles[log2].removeLog();
-            tiles[log2].setImage();
-            log2 -= 7;
-            tiles[log2].addLog();
-            tiles[log2].setImage();
+        } else {
+            tiles[log3].addLog();
+            tiles[log3].setImage();
         }
     }
+
+    public void log2Run() {
+        logRun(2);
+    }
     public void log3Run() {
-        if (log3 < 15) {
-            if (log3 == playerTile) {
-                if (getPlayerCoord().getX() < 7) {
-                    playerCoord.moveRight();
-                    tiles[playerTile].removeSprite();
-                    tiles[playerTile].setImage();
-                    playerTile += 1;
-                    tiles[playerTile].addSprite();
-                    tiles[playerTile].setImage();
-                }
-            }
-            tiles[log3].removeLog();
-            tiles[log3].setImage();
-            log3 += 1;
-            tiles[log3].addLog();
-            tiles[log3].setImage();
-        } else { // not updating player automatically kills them
-            tiles[log3].removeLog();
-            tiles[log3].setImage();
-            log3 -= 7;
-            tiles[log3].addLog();
-            tiles[log3].setImage();
-        }
+        logRun(3);
     }
 
     public Grid() {
@@ -345,6 +358,17 @@ public class Grid {
         }
     }
 
+    public void moveDown() {
+        if (getPlayerCoord().getY() < 11) {
+            playerCoord.moveDown();
+            tiles[playerTile].removeSprite();
+            tiles[playerTile].setImage();
+            playerTile += 8;
+            tiles[playerTile].addSprite();
+            tiles[playerTile].setImage();
+        }
+    }
+
     public void moveUp() {
         if (getPlayerCoord().getY() > 1) {
             playerCoord.moveUp();
@@ -367,17 +391,6 @@ public class Grid {
                 }
                 Grid.updateyMax();
             }
-        }
-    }
-
-    public void moveDown() {
-        if (getPlayerCoord().getY() < 11) {
-            playerCoord.moveDown();
-            tiles[playerTile].removeSprite();
-            tiles[playerTile].setImage();
-            playerTile += 8;
-            tiles[playerTile].addSprite();
-            tiles[playerTile].setImage();
         }
     }
 
