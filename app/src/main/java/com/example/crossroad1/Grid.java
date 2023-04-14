@@ -35,9 +35,9 @@ public class Grid {
     private int ufoTile2 = 48;
     private int jetTile2 = 47;
 
-    private int log1 = 31; // starts 3rd row to right
-    private int log3 = 8; //left
-    private int log2 = 16;//left
+    private int log1 = 28; // starts 3rd row to right
+    private int log3 = 12; //left
+    private int log2 = 20;//left
 
 
     public void carRun() {
@@ -244,14 +244,17 @@ public class Grid {
         tiles[ufoTile2].addUFO();
         tiles[jetTile1].addJet();
         tiles[jetTile2].addJet();
+        tiles[log1].addLog();
+        tiles[log2].addLog();
+        tiles[log3].addLog();
         playerCoord = new Coordinate(4, 11);
         carCoord1 = new Coordinate(7,  10);
         ufoCoord1 = new Coordinate(0, 9);
         jetCoord1 = new Coordinate(7, 8);
         ufoCoord2 = new Coordinate(0, 7);
         jetCoord2 = new Coordinate(7, 6);
-        logCoord1 = new Coordinate(7, 3);
-        logCoord2 = new Coordinate(0, 2);
+        logCoord1 = new Coordinate(4, 3);
+        logCoord2 = new Coordinate(4, 2);
     }
 
     public Tile[] getTiles() {
@@ -310,6 +313,12 @@ public class Grid {
         return playerTile;
     }
 
+    public void resetPlayer() {
+        playerTile = 84;
+        playerCoord.setX(4);
+        playerCoord.setY(11);
+    }
+
     // player movement needed for sprint 1
     // process for not going outside of grid
     // called depending onKeyPress
@@ -351,7 +360,7 @@ public class Grid {
                     Player.incPoints(200);
                 } else if (Grid.getYMax() == 9 || Grid.getYMax() == 7) {
                     Player.incPoints(300);
-                } else if (Grid.getYMax() == 0){
+                } else if (playerTile < 8){
                     Player.incPoints(5000);
                 } else {
                     Player.incPoints(50);
