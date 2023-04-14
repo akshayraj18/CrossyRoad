@@ -10,13 +10,13 @@ import android.widget.TextView;
 
 import com.example.crossroad1.R;
 
-public class EndActivity extends AppCompatActivity {
+public class WinActivity extends AppCompatActivity {
     private Button restart;
     private Button exit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.end_screen);
+        setContentView(R.layout.win_screen);
 
         TextView points = (TextView) findViewById(R.id.points);
         points.setText("Points: " + ConfigActivity.getPlayer().getPoints());
@@ -25,7 +25,7 @@ public class EndActivity extends AppCompatActivity {
         restart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(EndActivity.this, ConfigActivity.class));
+                startActivity(new Intent(WinActivity.this, ConfigActivity.class));
             }
         });
 
@@ -33,7 +33,7 @@ public class EndActivity extends AppCompatActivity {
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(EndActivity.this, WelcomeActivity.class));
+                startActivity(new Intent(WinActivity.this, WelcomeActivity.class));
             }
         });
     }

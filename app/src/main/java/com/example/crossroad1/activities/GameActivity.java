@@ -29,10 +29,10 @@ public class GameActivity  extends AppCompatActivity {
     public static ImageAdapterGridView getAdapter() {
         return adapter;
     }
-    Player goat = ConfigActivity.getPlayer();
+    private Player goat = ConfigActivity.getPlayer();
 
 
-    Handler handler1 = new Handler();
+    private Handler handler1 = new Handler();
     private Runnable carMove = new Runnable() {
         @Override
         public void run() {
@@ -41,7 +41,7 @@ public class GameActivity  extends AppCompatActivity {
                 grid = new Grid();
                 if (goat.getLives() == 1) {
                     startActivity(new Intent(GameActivity.this, EndActivity.class));
-                 } else {
+                } else {
                     goat.decLives();
                     Player.setPoints(0);
                     startActivity(new Intent(GameActivity.this, GameActivity.class));
@@ -63,6 +63,10 @@ public class GameActivity  extends AppCompatActivity {
                     Player.setPoints(0);
                     startActivity(new Intent(GameActivity.this, GameActivity.class));
                 }
+                if (grid.reachedGoal()) {
+                    startActivity(new Intent(GameActivity.this, WinActivity.class));
+                    return;
+                }
             }
             handler1.postDelayed(this, 750); // Call the clock again
         }
@@ -81,7 +85,26 @@ public class GameActivity  extends AppCompatActivity {
                     startActivity(new Intent(GameActivity.this, GameActivity.class));
                 }
             }
+            if (grid.reachedGoal()) {
+                startActivity(new Intent(GameActivity.this, WinActivity.class));
+                return;
+            }
             handler1.postDelayed(this, 500); // Call the clock again
+        }
+    };
+    private Runnable log1Move = new Runnable() {
+        @Override
+        public void run() {// process log moving player off screen soon
+            grid.log1Run();
+            handler1.postDelayed(this, 500); // Call the clock again
+        }
+    };
+    private Runnable log23Move = new Runnable() {
+        @Override
+        public void run() {// process log moving player off screen soon
+            grid.log2Run();
+            grid.log3Run();
+            handler1.postDelayed(this, 750); // Call the clock again
         }
     };
 
@@ -103,12 +126,14 @@ public class GameActivity  extends AppCompatActivity {
         playerName.setText("Player Name: " + goat.getName());
         TextView playerPoints = findViewById(R.id.points);
         playerPoints.setText("Points: " + goat.getPoints());
-//        Grid.resetYMax();
+
 
         Handler handler = new Handler();
         handler.postDelayed(carMove, 1000);
         handler.postDelayed(ufoMove, 1000);
         handler.postDelayed(jetMove, 1000);
+        handler.postDelayed(log1Move, 1000);
+        handler.postDelayed(log23Move, 1000);
 
         FloatingActionButton left = findViewById(R.id.left);
         FloatingActionButton right = findViewById(R.id.right);
@@ -119,16 +144,6 @@ public class GameActivity  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 grid.moveLeft();
-//                if (grid.hasCollision() || grid.inWater()) {
-//                    if (goat.getLives() == 1) {
-//                        startActivity(new Intent(GameActivity.this, EndActivity.class));
-//                    } else {
-//                        goat.decLives();
-//                        Player.setPoints(0);
-//                        startActivity(new Intent(GameActivity.this, GameActivity.class));
-//                    }
-//                    return;
-//                }
                 adapter.notifyDataSetChanged();
             }
         });
@@ -137,16 +152,6 @@ public class GameActivity  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 grid.moveRight();
-//                if (grid.hasCollision() || grid.inWater()) {
-//                    if (goat.getLives() == 1) {
-//                        startActivity(new Intent(GameActivity.this, EndActivity.class));
-//                    } else {
-//                        goat.decLives();
-//                        Player.setPoints(0);
-//                        startActivity(new Intent(GameActivity.this, GameActivity.class));
-//                    }
-//                    return;
-//                }
                 adapter.notifyDataSetChanged();
             }
         });
@@ -155,16 +160,6 @@ public class GameActivity  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 grid.moveUp();
-//                if (grid.hasCollision() || grid.inWater()) {
-//                    if (goat.getLives() == 1) {
-//                        startActivity(new Intent(GameActivity.this, EndActivity.class));
-//                    } else {
-//                        goat.decLives();
-//                        Player.setPoints(0);
-//                        startActivity(new Intent(GameActivity.this, GameActivity.class));
-//                    }
-//                    return;
-//                }
                 TextView playerPoints = findViewById(R.id.points);
                 playerPoints.setText("Points: " + goat.getPoints());
                 adapter.notifyDataSetChanged();
@@ -175,16 +170,6 @@ public class GameActivity  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 grid.moveDown();
-                if (grid.hasCollision() || grid.inWater()) {
-                    if (goat.getLives() == 1) {
-                        startActivity(new Intent(GameActivity.this, EndActivity.class));
-                    } else {
-                        goat.decLives();
-                        Player.setPoints(0);
-                        startActivity(new Intent(GameActivity.this, GameActivity.class));
-                    }
-                    return;
-                }
                 adapter.notifyDataSetChanged();
             }
         });

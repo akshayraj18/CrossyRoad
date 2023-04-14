@@ -38,7 +38,7 @@ public class Player {
         return name;
     }
 
-    public Sprite getSprite() {
+    public static Sprite getSprite() {
         return sprite;
     }
 

@@ -1,6 +1,7 @@
 package com.example.crossroad1;
 
 import com.example.crossroad1.activities.ConfigActivity;
+import com.example.crossroad1.enums.Sprite;
 
 public abstract class Tile {
     // grid x and y
@@ -11,6 +12,8 @@ public abstract class Tile {
     private boolean hasCar;
     private boolean hasJet;
     private boolean hasUFO;
+    private boolean hasLog;
+
     public Tile() {
         tileType = playerImage;
     }
@@ -22,8 +25,19 @@ public abstract class Tile {
     }
 
     public int getImage() {
-        if (hasPlayerSprite) {
+        if (hasPlayerSprite && !hasLog) {
             return ConfigActivity.getPlayer().getImage();
+        } else if (hasPlayerSprite && hasLog) {
+            Sprite sprite = Player.getSprite();
+            if (sprite == Sprite.MJ) {
+                return R.drawable.logj;
+            } else if (sprite == Sprite.LBJ) {
+                return R.drawable.logl;
+            } else {
+                return R.drawable.logs;
+            }
+        } else if (hasLog) {
+            return R.drawable.log;
         } else if (hasCar) {
             return R.drawable.delorean_vehicle;
         } else if (hasUFO) {
@@ -79,12 +93,24 @@ public abstract class Tile {
         hasJet = false;
     }
 
+    public void addLog() {
+        hasLog = true;
+    }
+
+    public void removeLog() {
+        hasLog = false;
+    }
+
     public void setTileType(int type) {
         tileType = type;
     }
 
     public boolean hasVehicle() {
         return hasCar || hasJet || hasUFO;
+    }
+
+    public boolean hasLog() {
+        return hasLog;
     }
 
 }
