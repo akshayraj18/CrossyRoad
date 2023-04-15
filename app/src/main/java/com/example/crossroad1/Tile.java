@@ -8,7 +8,12 @@ public abstract class Tile {
     private Coordinate coord;
     private int playerImage;
     private boolean hasPlayerSprite;
+<<<<<<< HEAD
     private int tileType;
+=======
+    protected int tileType;
+
+>>>>>>> f6f1785652cae4e3c0928234307a1f515a235a14
     private boolean hasCar;
     private boolean hasJet;
     private boolean hasUFO;
@@ -49,10 +54,24 @@ public abstract class Tile {
         }
     }
 
-    public void setImage() {
+    public void setImage(int playerImage) {
         if (hasPlayerSprite) {
+<<<<<<< HEAD
+            this.playerImage = playerImage;
+=======
             this.playerImage = ConfigActivity.getPlayer().getImage();
+<<<<<<< HEAD
         }  else {
+=======
+        } else if (hasCar) {
+            this.playerImage = tileType;
+        } else if (hasUFO) {
+            this.playerImage = tileType;
+        } else if (hasJet) {
+            this.playerImage = tileType;
+>>>>>>> c44be21cae45a55e197ecc6d6dd305841bfaf64c
+        } else {
+>>>>>>> f6f1785652cae4e3c0928234307a1f515a235a14
             this.playerImage = tileType;
         }
     }
@@ -65,6 +84,7 @@ public abstract class Tile {
 
     public void removeSprite() {
         hasPlayerSprite = false;
+
     }
 
     public void addCar() {
