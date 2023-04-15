@@ -8,12 +8,7 @@ public abstract class Tile {
     private Coordinate coord;
     private int playerImage;
     private boolean hasPlayerSprite;
-<<<<<<< HEAD
     private int tileType;
-=======
-    protected int tileType;
-
->>>>>>> f6f1785652cae4e3c0928234307a1f515a235a14
     private boolean hasCar;
     private boolean hasJet;
     private boolean hasUFO;
@@ -44,39 +39,23 @@ public abstract class Tile {
         } else if (hasLog) {
             return R.drawable.log;
         } else if (hasCar) {
-            return R.drawable.delorean_vehicle;
+            return R.drawable.car;
         } else if (hasUFO) {
-            return R.drawable.ufo_vehicle;
+            return R.drawable.ufo;
         } else if (hasJet) {
-            return R.drawable.jet_vehicle;
+            return R.drawable.jet;
         } else {
             return playerImage;
         }
     }
 
-    public void setImage(int playerImage) {
+    public void setImage() {
         if (hasPlayerSprite) {
-<<<<<<< HEAD
-            this.playerImage = playerImage;
-=======
             this.playerImage = ConfigActivity.getPlayer().getImage();
-<<<<<<< HEAD
         }  else {
-=======
-        } else if (hasCar) {
-            this.playerImage = tileType;
-        } else if (hasUFO) {
-            this.playerImage = tileType;
-        } else if (hasJet) {
-            this.playerImage = tileType;
->>>>>>> c44be21cae45a55e197ecc6d6dd305841bfaf64c
-        } else {
->>>>>>> f6f1785652cae4e3c0928234307a1f515a235a14
             this.playerImage = tileType;
         }
     }
-
-
 
     public void addSprite() {
         hasPlayerSprite = true;
@@ -84,7 +63,6 @@ public abstract class Tile {
 
     public void removeSprite() {
         hasPlayerSprite = false;
-
     }
 
     public void addCar() {
@@ -117,10 +95,6 @@ public abstract class Tile {
 
     public void removeLog() {
         hasLog = false;
-    }
-
-    public void setTileType(int type) {
-        tileType = type;
     }
 
     public boolean hasVehicle() {

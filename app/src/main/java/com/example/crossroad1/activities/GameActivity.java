@@ -96,7 +96,7 @@ public class GameActivity  extends AppCompatActivity {
         @Override
         public void run() {// process log moving player off screen soon
             grid.log1Run();
-            handler1.postDelayed(this, 500); // Call the clock again
+            handler1.postDelayed(this, 1000); // Call the clock again
         }
     };
     private Runnable log23Move = new Runnable() {
@@ -104,7 +104,7 @@ public class GameActivity  extends AppCompatActivity {
         public void run() {// process log moving player off screen soon
             grid.log2Run();
             grid.log3Run();
-            handler1.postDelayed(this, 750); // Call the clock again
+            handler1.postDelayed(this, 1000); // Call the clock again
         }
     };
 
@@ -210,6 +210,3 @@ public class GameActivity  extends AppCompatActivity {
         }
     }
 }
-
-
-
