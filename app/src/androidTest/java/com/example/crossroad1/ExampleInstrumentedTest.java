@@ -10,10 +10,6 @@ import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
 
-import com.example.crossroad1.activities.ConfigActivity;
-import com.example.crossroad1.activities.GameActivity;
-
-import junit.framework.TestCase;
 
 /**
  * Instrumented test, which will execute on an Android device.

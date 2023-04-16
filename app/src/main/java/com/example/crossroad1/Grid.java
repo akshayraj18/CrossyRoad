@@ -38,7 +38,7 @@ public class Grid {
 
     private int log1 = 28; // starts 3rd row to right
     private int log3 = 12; //left
-    private int log2 = 20;//left
+    private int log2 = 20; //left
 
     public Grid() {
         tiles = new Tile[8 * 11]; // cols*rows
@@ -239,7 +239,8 @@ public class Grid {
     }
 
     /*public void logRun(int logNumber) {
-        if ((logNumber == 2 && getLogCoord2().getX() < 7) || (logNumber == 3 && getLogCoord3().getX() < 7)) {
+        if ((logNumber == 2 && getLogCoord2().getX() < 7) || (logNumber == 3 &&
+        getLogCoord3().getX() < 7)) {
             if ((log2 == playerTile || log3 == playerTile) && getPlayerCoord().getX() < 7) {
                 playerCoord.moveRight();
                 tiles[playerTile].removeSprite();
@@ -411,7 +412,7 @@ public class Grid {
                     Player.incPoints(200);
                 } else if (Grid.getYMax() == 9 || Grid.getYMax() == 7) {
                     Player.incPoints(300);
-                } else if (playerTile < 8){
+                } else if (playerTile < 8) {
                     Player.incPoints(5000);
                 } else {
                     Player.incPoints(50);
