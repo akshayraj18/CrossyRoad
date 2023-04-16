@@ -23,6 +23,7 @@ public class Grid {
 
     private Coordinate logCoord1;
     private Coordinate logCoord2;
+    private Coordinate logCoord3;
 
 
     private final Tile[] tiles;
@@ -82,6 +83,7 @@ public class Grid {
         jetCoord2 = new Coordinate(7, 6);
         logCoord1 = new Coordinate(4, 3);
         logCoord2 = new Coordinate(4, 2);
+        logCoord3 = new Coordinate(4, 1);
     }
 
     public void carRun() {
@@ -180,9 +182,64 @@ public class Grid {
         }
     }
 
+    public void log2Run() { // make sure to move the player too if it is on the log
+        if (getLogCoord2().getX() < 7) {
+            if (log2 == playerTile) {
+                playerCoord.moveRight();
+                tiles[playerTile].removeSprite();
+                tiles[playerTile].setImage();
+                playerTile += 1;
+                tiles[playerTile].addSprite();
+                tiles[playerTile].setImage();
+            }
+            logCoord2.moveRight();
+            tiles[log2].removeLog();
+            tiles[log2].setImage();
+            log2 += 1;
+            tiles[log2].addLog();
+            tiles[log2].setImage();
+            GameActivity.getAdapter().notifyDataSetChanged();
+        } else { // not updating player automatically kills them
+            logCoord2.setX(0);
+            tiles[log2].removeLog();
+            tiles[log2].setImage();
+            log2 -= 7;
+            tiles[log2].addLog();
+            tiles[log2].setImage();
+            GameActivity.getAdapter().notifyDataSetChanged();
+        }
+    }
 
-    public void logRun(int logNumber) {
-        if ((logNumber == 2 && getLogCoord2().getX() < 7) || (logNumber == 3 && log3 < 15)) {
+    public void log3Run() { // make sure to move the player too if it is on the log
+        if (getLogCoord3().getX() < 7) {
+            if (log3 == playerTile) {
+                playerCoord.moveRight();
+                tiles[playerTile].removeSprite();
+                tiles[playerTile].setImage();
+                playerTile += 1;
+                tiles[playerTile].addSprite();
+                tiles[playerTile].setImage();
+            }
+            logCoord3.moveRight();
+            tiles[log3].removeLog();
+            tiles[log3].setImage();
+            log3 += 1;
+            tiles[log3].addLog();
+            tiles[log3].setImage();
+            GameActivity.getAdapter().notifyDataSetChanged();
+        } else { // not updating player automatically kills them
+            logCoord3.setX(0);
+            tiles[log3].removeLog();
+            tiles[log3].setImage();
+            log3 -= 7;
+            tiles[log3].addLog();
+            tiles[log3].setImage();
+            GameActivity.getAdapter().notifyDataSetChanged();
+        }
+    }
+
+    /*public void logRun(int logNumber) {
+        if ((logNumber == 2 && getLogCoord2().getX() < 7) || (logNumber == 3 && getLogCoord3().getX() < 7)) {
             if ((log2 == playerTile || log3 == playerTile) && getPlayerCoord().getX() < 7) {
                 playerCoord.moveRight();
                 tiles[playerTile].removeSprite();
@@ -196,29 +253,35 @@ public class Grid {
                 tiles[log2].removeLog();
                 tiles[log2].setImage();
                 log2 += 1;
+                tiles[log2].addLog();
+                tiles[log2].setImage();
+                GameActivity.getAdapter().notifyDataSetChanged();
             } else {
+                logCoord3.moveRight();
                 tiles[log3].removeLog();
                 tiles[log3].setImage();
                 log3 += 1;
+                tiles[log3].addLog();
+                tiles[log3].setImage();
+                GameActivity.getAdapter().notifyDataSetChanged();
             }
+            GameActivity.getAdapter().notifyDataSetChanged();
         } else {
             if (logNumber == 2) {
                 logCoord2.setX(0);
                 tiles[log2].removeLog();
                 tiles[log2].setImage();
                 log2 -= 7;
+                tiles[log2].addLog();
+                tiles[log2].setImage();
             } else {
+                logCoord3.setX(0);
                 tiles[log3].removeLog();
                 tiles[log3].setImage();
                 log3 -= 7;
+                tiles[log3].addLog();
+                tiles[log3].setImage();
             }
-        }
-        if (logNumber == 2) {
-            tiles[log2].addLog();
-            tiles[log2].setImage();
-        } else {
-            tiles[log3].addLog();
-            tiles[log3].setImage();
         }
     }
 
@@ -227,7 +290,7 @@ public class Grid {
     }
     public void log3Run() {
         logRun(3);
-    }
+    }*/
 
 
     public Tile[] getTiles() {
@@ -268,6 +331,10 @@ public class Grid {
 
     public Coordinate getLogCoord2() {
         return logCoord2;
+    }
+
+    public Coordinate getLogCoord3() {
+        return logCoord3;
     }
 
     public static int getYMax() {

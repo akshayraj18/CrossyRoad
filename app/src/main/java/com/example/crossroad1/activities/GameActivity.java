@@ -96,7 +96,7 @@ public class GameActivity  extends AppCompatActivity {
         @Override
         public void run() {// process log moving player off screen soon
             grid.log1Run();
-            handler1.postDelayed(this, 1000); // Call the clock again
+            handler1.postDelayed(this, 700); // Call the clock again
         }
     };
     private Runnable log23Move = new Runnable() {
